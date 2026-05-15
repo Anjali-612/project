@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Teams - Our NGO</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .teams-page { padding: 120px 0 80px; }
+    .team-detail { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; background: var(--white); border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow); margin-bottom: 40px; align-items: center; }
+    .team-detail img { width: 100%; border-radius: var(--radius); }
+    .team-detail h2 { font-size: 28px; color: var(--secondary); }
+    .team-detail h2 span { color: var(--primary); }
+    .team-detail .leader { color: var(--primary); font-weight: 600; margin: 5px 0 15px; }
+    .team-detail p { color: var(--text-light); margin-bottom: 15px; }
+    .team-detail .stats { display: flex; gap: 30px; margin-top: 20px; }
+    .team-detail .stats div { text-align: center; }
+    .team-detail .stats .num { font-size: 24px; font-weight: 800; color: var(--primary); }
+    .team-detail .stats .lbl { font-size: 12px; color: var(--text-light); }
+    .back-link { display: inline-block; margin-bottom: 30px; color: var(--primary); text-decoration: none; font-weight: 600; }
+    .back-link:hover { text-decoration: underline; }
+    @media (max-width: 768px) { .team-detail { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="container">
+      <div><i class="fas fa-phone"></i> +91 98765 43210 &nbsp;|&nbsp; <i class="fas fa-envelope"></i> info@ourngo.org</div>
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <header class="sub-page-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Prajwala Community Development Society" class="logo-img">
+        <div class="logo-text">Prajwala Community <span>Development Society</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+
+          <li><a href="gallery.html" class="gallery-btn">Gallery</a></li>
+          <li><a href="oldage-home.html">Old Age Home</a></li>
+          <li><a href="index.html#join">Join Us</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+           <li><button class="lang-nav-btn" onclick="toggleLangNav()" id="langNavBtn">తెలుగు</button></li>
+           <li><a href="donate.html" class="donate-btn">Donate Now</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="teams-page">
+    <div class="container">
+      <a href="index.html#teams" class="back-link"><i class="fas fa-arrow-left"></i> Back to Teams</a>
+
+      <div class="section-title">
+        <h2>Our Dedicated Teams</h2>
+        <p>Meet our passionate teams working tirelessly to create positive change in communities across India.</p>
+      </div>
+
+      <div class="team-detail">
+        <img src="https://picsum.photos/seed/feedteam/500/350" alt="Feeding Hands">
+        <div>
+          <h2><span>Feeding</span> Hands</h2>
+          <div class="leader">Lead by: Ananya Sharma</div>
+          <p>Dedicated to providing nutritious meals to underprivileged children and families. We believe no child should go to bed hungry. Our team works with local communities, restaurants, and donors to ensure food reaches those who need it most.</p>
+          <p>We run daily meal programs in 15 locations across the city, serving fresh, nutritious meals to children and families in need. Our mission is to eliminate child hunger in our operational areas.</p>
+          <div class="stats">
+            <div><span class="num">500+</span><span class="lbl">Meals Daily</span></div>
+            <div><span class="num">15</span><span class="lbl">Locations</span></div>
+            <div><span class="num">25</span><span class="lbl">Members</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-detail">
+        <img src="https://picsum.photos/seed/lifeteam/500/350" alt="Life Saviours">
+        <div>
+          <h2><span>Life</span> Saviours</h2>
+          <div class="leader">Lead by: Dr. Vikram Reddy</div>
+          <p>Providing healthcare services and medical assistance to rural communities. Making healthcare accessible to all through mobile clinics, health camps, and awareness programs.</p>
+          <p>Our team of medical professionals and volunteers conducts regular health check-up camps in remote villages, distributes essential medicines, and provides health education to prevent common diseases.</p>
+          <div class="stats">
+            <div><span class="num">1000+</span><span class="lbl">Patients Served</span></div>
+            <div><span class="num">8</span><span class="lbl">Clinics</span></div>
+            <div><span class="num">30</span><span class="lbl">Members</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-detail">
+        <img src="https://picsum.photos/seed/techteam/500/350" alt="Tech Saala">
+        <div>
+          <h2><span>Tech</span> Saala</h2>
+          <div class="leader">Lead by: Rahul Kumar</div>
+          <p>Empowering youth with digital literacy and technology skills. Bridging the digital divide in rural areas through computer education, coding workshops, and digital awareness programs.</p>
+          <p>We have set up computer labs in 10 rural schools and conduct regular workshops on basic computing, internet safety, and coding for young students. Our goal is to prepare rural youth for the digital economy.</p>
+          <div class="stats">
+            <div><span class="num">500+</span><span class="lbl">Students Trained</span></div>
+            <div><span class="num">10</span><span class="lbl">Centers</span></div>
+            <div><span class="num">20</span><span class="lbl">Members</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-detail">
+        <img src="https://picsum.photos/seed/eliteteam/500/350" alt="Elite Queens">
+        <div>
+          <h2><span>Elite</span> Queens</h2>
+          <div class="leader">Lead by: Priya Patel</div>
+          <p>Empowering women through skill development and entrepreneurship. Creating leaders of tomorrow by providing vocational training, financial literacy, and business mentorship.</p>
+          <p>Our programs have helped hundreds of women start their own small businesses, achieve financial independence, and become role models in their communities. We focus on tailoring, handicrafts, food processing, and digital skills.</p>
+          <div class="stats">
+            <div><span class="num">200+</span><span class="lbl">Women Empowered</span></div>
+            <div><span class="num">12</span><span class="lbl">Programs</span></div>
+            <div><span class="num">35</span><span class="lbl">Members</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-detail">
+        <img src="https://picsum.photos/seed/visualteam/500/350" alt="Visual Vibes">
+        <div>
+          <h2><span>Visual</span> Vibes</h2>
+          <div class="leader">Lead by: Arjun Nair</div>
+          <p>Creating compelling visual content and digital media to amplify our mission and reach more communities. From photography to videography, we tell stories that inspire action.</p>
+          <p>Our team documents the impact of our work through photos, videos, and social media. We create awareness campaigns, success stories, and educational content to spread our message far and wide.</p>
+          <div class="stats">
+            <div><span class="num">1000+</span><span class="lbl">Videos Created</span></div>
+            <div><span class="num">500+</span><span class="lbl">Designs</span></div>
+            <div><span class="num">15</span><span class="lbl">Members</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-detail">
+        <img src="https://picsum.photos/seed/guidingteam/500/350" alt="Guiding Lights">
+        <div>
+          <h2><span>Guiding</span> Lights</h2>
+          <div class="leader">Lead by: Sneha Verma</div>
+          <p>Providing educational support and mentorship to students. Lighting the path to a brighter future through tutoring, career guidance, scholarship assistance, and life skills training.</p>
+          <p>Our team works with 25 partner schools, providing after-school tutoring, mentorship programs, and scholarship support to help underprivileged students excel academically and build successful careers.</p>
+          <div class="stats">
+            <div><span class="num">2000+</span><span class="lbl">Students Supported</span></div>
+            <div><span class="num">25</span><span class="lbl">Schools</span></div>
+            <div><span class="num">40</span><span class="lbl">Members</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo-text" style="color: #fff; margin-bottom: 15px;">Prajwala Community <span>Development Society</span></div>
+          <p>We serve people, we build nature &amp; culture — through education, healthcare, and sustainable development.</p>
+          <div class="social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#teams">Our Teams</a></li>
+            <li><a href="index.html#events">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Our Programs</h3>
+          <ul>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Women Empowerment</a></li>
+            <li><a href="#">Skill Development</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <div class="newsletter">
+            <input type="email" placeholder="Your email address">
+            <button type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Our NGO. All rights reserved.</span>
+        <div><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Our NGO</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="container">
+      <div><i class="fas fa-phone"></i> +91 98765 43210 &nbsp;|&nbsp; <i class="fas fa-envelope"></i> info@ourngo.org
+      </div>
+      <div class="social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <header class="sub-page-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Prajwala Community Development Society" class="logo-img">
+        <div class="logo-text">Prajwala Community <span>Development Society</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+
+          <li><a href="gallery.html" class="gallery-btn active">Gallery</a></li>
+          <li><a href="oldage-home.html">Old Age Home</a></li>
+          <li><a href="index.html#join">Join Us</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><button class="lang-nav-btn" onclick="toggleLangNav()" id="langNavBtn">తెలుగు</button></li>
+          <li><a href="donate.html" class="donate-btn">Donate Now</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="gallery-page">
+    <div class="container">
+      <div class="gallery-header">
+        <h1>Our <span>Gallery</span></h1>
+        <p>Explore moments captured across our various events and programs. Click on an event folder to view photos and
+          videos.</p>
+      </div>
+
+      <div class="gallery-folders" id="galleryFolders">
+        <div class="folder-card" onclick="showSwacchBharatImages()" style="cursor: pointer;">
+          <img src="images/sw.jpeg" alt="Swacch Bharat">
+          <div class="folder-info">
+            <h3>Swacch Bharat</h3>
+            <p>Cleanliness drives</p>
+          </div>
+        </div>
+
+        <div class="folder-card" onclick="showCOVIDImages()" style="cursor: pointer;">
+          <img src="images/corona1.jpeg" alt="COVID">
+          <div class="folder-info">
+            <h3>COVID</h3>
+            <p>Relief and support</p>
+          </div>
+        </div>
+
+        <div class="folder-card" onclick="showEducationImages()" style="cursor: pointer;">
+          <img src="images/Edu.jpeg" alt="Education">
+          <div class="folder-info">
+            <h3>Education</h3>
+            <p>Teaching and mentoring</p>
+          </div>
+        </div>
+
+        <div class="folder-card" onclick="showDonationsImages()" style="cursor: pointer;">
+          <img src="images/Donations.jpeg" alt="Donations">
+          <div class="folder-info">
+            <h3>Donations</h3>
+            <p>Distributions</p>
+          </div>
+        </div>
+
+        <div class="folder-card" onclick="showAchievementsImages()" style="cursor: pointer;">
+          <img src="images/Achievements.jpeg" alt="Achievements">
+          <div class="folder-info">
+            <h3>Achievements</h3>
+            <p>Awards and recognition</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swacch Bharat Images Section (Hidden by default) -->
+      <div id="swacchBharatImages" style="display: none;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h1>Swacch Bharat <span>Gallery</span></h1>
+        <p class="event-date"><i class="fas fa-calendar-alt"></i> Community Cleanliness Drives | <i class="fas fa-map-marker-alt"></i> Multiple Locations</p>
+        <div class="media-grid">
+          <div class="media-item"><img src="images/sw1.jpeg" alt="Swacch Bharat 1" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/sw2.jpeg" alt="Swacch Bharat 2" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/sw3.jpeg" alt="Swacch Bharat 3" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/sw4.jpeg" alt="Swacch Bharat 4" onclick="openLightbox(this.src)"></div>
+        </div>
+      </div>
+
+      <!-- COVID Images Section (Hidden by default) -->
+      <div id="covidImages" style="display: none;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h1>COVID <span>Gallery</span></h1>
+        <p class="event-date"><i class="fas fa-calendar-alt"></i> COVID-19 Relief & Support | <i class="fas fa-map-marker-alt"></i> Multiple Locations</p>
+        <div class="media-grid">
+          <div class="media-item"><img src="images/Covid.jpeg" alt="COVID Support" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/covid%20cert.jpeg" alt="COVID Certificate" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/covid3.jpeg" alt="COVID Relief Activity" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/health.jpeg" alt="Health Campaign" onclick="openLightbox(this.src)"></div>
+        </div>
+      </div>
+
+      <!-- Education Images Section (Hidden by default) -->
+      <div id="educationImages" style="display: none;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h1>Education <span>Gallery</span></h1>
+        <p class="event-date"><i class="fas fa-calendar-alt"></i> Teaching & Mentoring Programs | <i class="fas fa-map-marker-alt"></i> Multiple Locations</p>
+        <div class="media-grid">
+          <div class="media-item"><img src="images/education1.jpeg" alt="Education 1" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/education2.jpeg" alt="Education 2" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/education3.jpeg" alt="Education 3" onclick="openLightbox(this.src)"></div>
+        </div>
+      </div>
+
+      <!-- Donations Images Section (Hidden by default) -->
+      <div id="donationsImages" style="display: none;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h1>Donations <span>Gallery</span></h1>
+        <p class="event-date"><i class="fas fa-calendar-alt"></i> Donation Drives & Distributions | <i class="fas fa-map-marker-alt"></i> Multiple Locations</p>
+        <div class="media-grid">
+          <div class="media-item"><img src="images/donation main page.jpeg" alt="Donation Drive" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/blood donation.jpeg" alt="Blood Donation" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/boold donation2.jpeg" alt="Blood Donation Drive" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/hair donation.jpeg" alt="Hair Donation" onclick="openLightbox(this.src)"></div>
+        </div>
+      </div>
+
+      <!-- Achievements Images Section (Hidden by default) -->
+      <div id="achievementsImages" style="display: none;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h1>Achievements <span>Gallery</span></h1>
+        <p class="event-date"><i class="fas fa-calendar-alt"></i> Awards & Recognition | <i class="fas fa-map-marker-alt"></i> Multiple Locations</p>
+        <div class="media-grid">
+          <div class="media-item"><img src="images/achevement1.jpeg" alt="Achievement 1" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/ac2.jpeg" alt="Achievement 2" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/ac3.jpeg" alt="Achievement 3" onclick="openLightbox(this.src)"></div>
+          <div class="media-item"><img src="images/ac4.jpeg" alt="Achievement 4" onclick="openLightbox(this.src)"></div>
+        </div>
+      </div>
+
+      <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+        <button class="close" onclick="document.getElementById('lightbox').classList.remove('open')">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+      </div>
+
+      <!-- Admin Login Modal -->
+      <div class="admin-modal" id="adminModal">
+        <div class="admin-modal-content">
+          <span class="admin-modal-close" onclick="closeAdminLogin()">&times;</span>
+          <h3><i class="fas fa-shield-alt"></i> Admin Login</h3>
+          <p>Enter admin password to manage content</p>
+          <input type="password" id="adminPassword" placeholder="Enter admin password"
+            onkeydown="if(event.key==='Enter') adminLogin()">
+          <button class="btn btn-primary" onclick="adminLogin()" style="margin-top:10px;width:100%;">Login</button>
+          <p style="font-size:12px;color:var(--text-light);margin-top:8px;">Default password:
+            <strong>prajwala123</strong>
+          </p>
+          <p id="adminError" style="color:#dc2626;font-size:13px;margin-top:8px;display:none;">Incorrect password</p>
+          <p style="margin-top:12px;font-size:12px;"><a href="#" onclick="resetAdminPassword()"
+              style="color:var(--primary);text-decoration:underline;">Forgot password? Reset via email</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Login Button (at bottom) -->
+  <div style="text-align:center;padding:20px;background:var(--cream-dark);" id="adminControls">
+    <button class="btn btn-outline-oah" id="adminLoginBtn" onclick="showAdminLogin()"><i class="fas fa-lock"></i> Admin
+      Portal</button>
+    <button class="btn btn-primary" id="adminLogoutBtn" onclick="adminLogout()" style="display:none;"><i
+        class="fas fa-unlock"></i> Logout Admin</button>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo-text" style="color: #fff; margin-bottom: 15px;">Prajwala Community <span>Development
+              Society</span></div>
+          <p>We serve people, we build nature &amp; culture — through education, healthcare, and sustainable
+            development.</p>
+          <div class="social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#teams">Our Teams</a></li>
+            <li><a href="index.html#events">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="oldage-home.html">Old Age Home</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Our Programs</h3>
+          <ul>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Women Empowerment</a></li>
+            <li><a href="#">Skill Development</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Newsletter</h3>
+          <div class="newsletter">
+            <input type="email" placeholder="Your email address">
+            <button type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Our NGO. All rights reserved.</span>
+        <div><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="js/script.js"></script>
+  <script>
+    function showSwacchBharatImages() {
+      document.getElementById('galleryFolders').style.display = 'none';
+      document.getElementById('swacchBharatImages').style.display = 'block';
+      document.querySelector('.gallery-header').style.display = 'none';
+    }
+
+    function showCOVIDImages() {
+      document.getElementById('galleryFolders').style.display = 'none';
+      document.getElementById('covidImages').style.display = 'block';
+      document.querySelector('.gallery-header').style.display = 'none';
+    }
+
+    function showEducationImages() {
+      document.getElementById('galleryFolders').style.display = 'none';
+      document.getElementById('educationImages').style.display = 'block';
+      document.querySelector('.gallery-header').style.display = 'none';
+    }
+
+    function showDonationsImages() {
+      document.getElementById('galleryFolders').style.display = 'none';
+      document.getElementById('donationsImages').style.display = 'block';
+      document.querySelector('.gallery-header').style.display = 'none';
+    }
+
+    function showAchievementsImages() {
+      document.getElementById('galleryFolders').style.display = 'none';
+      document.getElementById('achievementsImages').style.display = 'block';
+      document.querySelector('.gallery-header').style.display = 'none';
+    }
+
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+  </script>
+</body>
+
+</html>
