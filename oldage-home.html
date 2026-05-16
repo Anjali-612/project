@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Old Age Home - Our NGO</title>
+  <title>Old Age Home - Prajwala Community Development Society</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Extra polish for OAH page */
     .oah-hero {
       height: 300px;
       background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
@@ -29,23 +28,181 @@
     .oah-hero h1 { font-size: 44px; font-weight: 900; position: relative; z-index: 1; }
     .oah-hero h1 span { background: linear-gradient(135deg, #F59E0B, #EC4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .oah-hero p { position: relative; z-index: 1; opacity: 0.7; margin-top: 8px; font-size: 17px; }
-    .attendance-legend { display: flex; gap: 15px; justify-content: flex-end; margin-bottom: 12px; font-size: 12px; }
-    .attendance-legend span { display: flex; align-items: center; gap: 5px; }
-    .att-legend-dot { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
-    .att-legend-dot.p { background: var(--accent); }
-    .att-legend-dot.a { background: #EF4444; }
-    .att-legend-dot.na { background: #E2E8F0; }
-    .menu-badge { display: inline-block; padding: 2px 10px; border-radius: 50px; font-size: 11px; font-weight: 600; }
-    .menu-badge.veg { background: #D1FAE5; color: #065F46; }
-    .menu-badge.nonveg { background: #FEE2E2; color: #991B1B; }
-    .oah-actions { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-    .oah-actions .btn { padding: 10px 22px; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
-    .oah-actions .btn-primary { background: var(--gradient-1); color: #fff; box-shadow: 0 4px 15px rgba(245,158,11,0.25); }
-    .oah-actions .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245,158,11,0.35); }
-    .oah-actions .btn-outline-oah { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
-    .oah-actions .btn-outline-oah:hover { background: var(--primary); color: #fff; }
-    .today-date { font-size: 14px; color: var(--text-light); margin-bottom: 15px; }
-    .today-date strong { color: var(--text); }
+
+    .oah-section-bar {
+      background: var(--gradient-1);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .oah-section-bar i { font-size: 18px; }
+
+    .admin-actions-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0 15px;
+    }
+    .admin-actions-bar .btn { font-size: 13px; padding: 7px 16px; }
+
+    .oah-panel { 
+      margin-bottom: 30px; 
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--cream-dark);
+      overflow: hidden;
+    }
+    .oah-panel .oah-table-wrap { border-radius: 0; border: none; box-shadow: none; }
+    .oah-panel .oah-table th:first-child { border-radius: 0; }
+    .oah-panel .oah-table th:last-child { border-radius: 0; }
+
+    .attendance-controls {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 15px 20px;
+    }
+    .attendance-controls label { font-weight: 600; font-size: 14px; }
+    .attendance-controls input[type="date"] {
+      padding: 8px 12px;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .att-btn-group { display: flex; gap: 6px; }
+    .att-btn {
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 2px solid #E2E8F0;
+      background: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .att-btn.present { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .att-btn.absent { background: #EF4444; color: #fff; border-color: #EF4444; }
+
+    .notif-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      background: #fff;
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      border: 1px solid var(--cream-dark);
+    }
+    .notif-card .notif-info { flex: 1; }
+    .notif-card .notif-info h4 { font-size: 15px; margin-bottom: 2px; }
+    .notif-card .notif-info p { font-size: 13px; color: var(--text-light); }
+    .notif-card .notif-actions { display: flex; gap: 6px; }
+    .notif-card .notif-actions button { font-size: 12px; padding: 4px 12px; }
+
+    .donors-grid-admin {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .oah-actions-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .tab-bar-container {
+      background: var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 5px;
+      margin-bottom: 25px;
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .tab-bar-btn {
+      flex: 1;
+      min-width: 100px;
+      padding: 12px 18px;
+      border: none;
+      background: transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+      transition: all 0.3s;
+      text-align: center;
+    }
+    .tab-bar-btn.active {
+      background: var(--white);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      color: var(--primary);
+    }
+    .tab-bar-btn i { margin-right: 6px; }
+
+    .admin-badge { display: none; }
+    body.admin-logged-in .admin-badge { display: inline-flex; }
+
+    .oah-notif-bell {
+      position: relative;
+      display: inline-flex;
+    }
+    .oah-notif-bell .notif-count {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #EF4444;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .oah-med-within {
+      padding: 15px 20px;
+    }
+    .oah-med-within .resident-med-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 12px;
+      border: 1px solid var(--cream-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .oah-med-within .resident-med-card .med-info h4 { font-size: 15px; }
+    .oah-med-within .resident-med-card .med-info p { font-size: 13px; color: var(--text-light); }
+    .oah-med-within .resident-med-card .med-actions { display: flex; gap: 6px; }
+    .oah-med-within .resident-med-card .med-actions button { font-size: 11px; padding: 4px 10px; }
+    .med-next-checkup { 
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .med-next-checkup.upcoming { background: #FEF3C7; color: #92400E; }
+    .med-next-checkup.overdue { background: #FEE2E2; color: #991B1B; }
+    .med-next-checkup.done { background: #D1FAE5; color: #065F46; }
+    .admin-only { display: none; }
+    body.admin-logged-in .admin-only { display: revert; }
+    body.admin-logged-in .admin-only.tab-bar-container { display: flex; }
   </style>
 </head>
 <body>
@@ -54,15 +211,15 @@
   <div class="top-bar">
     <div class="container">
       <div class="contact-info">
-        <span><i class="fas fa-phone"></i> +91 98765 43210</span>
-        <span><i class="fas fa-envelope"></i> info@ourngo.org</span>
+        <span><i class="fas fa-phone"></i> +91 9502046096</span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:pcdsguntur19@gmail.com" style="color:inherit;text-decoration:none;">pcdsguntur19@gmail.com</a></span>
       </div>
       <div style="display:flex;align-items:center;gap:12px;">
         <div class="social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/919876543210"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/pcdsguntur/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/pcds2026/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
     </div>
@@ -79,7 +236,6 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="index.html#about">About</a></li>
-
           <li><a href="gallery.html" class="gallery-btn">Gallery</a></li>
           <li><a href="oldage-home.html" class="active">Old Age Home</a></li>
           <li><a href="index.html#join">Join Us</a></li>
@@ -97,7 +253,7 @@
   <!-- OAH HERO -->
   <div class="oah-hero">
     <div>
-      <h1>Shanti <span>Vrudhashramam</span></h1>
+      <h1>Prajwala Community <span>Development Society</span></h1>
       <p>Providing love, care & dignity to our elderly residents since 2018</p>
     </div>
   </div>
@@ -120,13 +276,42 @@
         </div>
         <div class="oah-stat pink">
           <div class="oah-icon"><i class="fas fa-heartbeat"></i></div>
-          <span class="oah-number">6</span>
+          <span class="oah-number" id="medicalCount">6</span>
           <span class="oah-label">Under Medical Care</span>
         </div>
         <div class="oah-stat blue">
           <div class="oah-icon"><i class="fas fa-utensils"></i></div>
           <span class="oah-number">3</span>
           <span class="oah-label">Meals Daily</span>
+        </div>
+      </div>
+
+      <!-- Weekly Menu -->
+      <div style="margin-top:30px;padding-top:30px;border-top:2px solid var(--cream-dark);">
+        <h3 style="text-align:center;font-size:26px;margin-bottom:10px;">Weekly <span style="background:linear-gradient(135deg,#F59E0B,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Menu</span></h3>
+        <p style="text-align:center;color:var(--text-light);margin-bottom:25px;"><i class="fas fa-heart" style="color:var(--primary);"></i> Nutritious & balanced meals prepared with love for our elders</p>
+        <div class="menu-grid" id="menuGrid"></div>
+      </div>
+
+      <!-- PUBLIC Residents Table -->
+      <div class="oah-panel" id="publicResidentsSection">
+        <h3 style="padding:15px 20px;margin:0;font-size:18px;"><i class="fas fa-list"></i> Our Residents</h3>
+        <div class="oah-table-wrap">
+          <table class="oah-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Joined</th>
+                <th>Health Status</th>
+                <th>Relation</th>
+                <th>Contact No</th>
+              </tr>
+            </thead>
+            <tbody id="publicResidentsTableBody"></tbody>
+          </table>
         </div>
       </div>
 
@@ -138,26 +323,27 @@
           <p>Enter admin password to manage Old Age Home</p>
           <input type="password" id="adminPassword" placeholder="Enter admin password" onkeydown="if(event.key==='Enter') adminLogin()">
           <button class="btn btn-primary" onclick="adminLogin()" style="margin-top:10px;width:100%;">Login</button>
-          <p style="font-size:12px;color:var(--text-light);margin-top:8px;">Default password: <strong>prajwala123</strong></p>
           <p id="adminError" style="color:#dc2626;font-size:13px;margin-top:8px;display:none;">Incorrect password</p>
-          <p style="margin-top:12px;font-size:12px;"><a href="#" onclick="resetAdminPassword()" style="color:var(--primary);text-decoration:underline;">Forgot password? Reset via email</a></p>
         </div>
       </div>
 
-
-
-      <!-- Today's Date (admin only) -->
-      <div class="today-date admin-only"><strong><i class="fas fa-calendar-day"></i> Today:</strong> <span id="currentDate"></span></div>
-
-      <!-- Tabs (admin only) -->
-      <div class="oah-tabs admin-only">
-        <button class="oah-tab active" data-panel="residents"><i class="fas fa-list"></i> Residents</button>
-        <button class="oah-tab" data-panel="attendance"><i class="fas fa-clipboard-check"></i> Attendance</button>
-        <button class="oah-tab" data-panel="medical"><i class="fas fa-notes-medical"></i> Medical Reports</button>
+      <!-- ADMIN TAB BAR -->
+      <div class="admin-only tab-bar-container" id="adminTabBar">
+        <button class="tab-bar-btn active" onclick="switchAdminTab('residentsPanel')"><i class="fas fa-list"></i> Residents</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('attendancePanel')"><i class="fas fa-clipboard-check"></i> Attendance</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('medicalPanel')"><i class="fas fa-notes-medical"></i> Medical</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('donorsPanel')"><i class="fas fa-donate"></i> Donors</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('notificationsPanel')"><i class="fas fa-bell"></i> Notifications</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('exportPanel')"><i class="fas fa-file-excel"></i> Export</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('menuEditorPanel')"><i class="fas fa-utensils"></i> Menu Editor</button>
       </div>
 
-      <!-- ====== RESIDENTS PANEL (admin only) ====== -->
-      <div class="oah-panel admin-only active" id="residents">
+      <!-- ====== RESIDENTS PANEL ====== -->
+      <div class="admin-only oah-panel" id="residentsPanel">
+        <div class="oah-section-bar"><i class="fas fa-list"></i> Residents</div>
+        <div class="admin-actions-bar" style="padding:10px 15px 0 15px;">
+          <button class="btn btn-primary" onclick="addResident()"><i class="fas fa-plus"></i> Add Resident</button>
+        </div>
         <div class="oah-table-wrap">
           <table class="oah-table">
             <thead>
@@ -168,238 +354,99 @@
                 <th>Gender</th>
                 <th>Joined</th>
                 <th>Health Status</th>
-                <th>Contact</th>
+                <th>Relation</th>
+                <th>Contact No</th>
+                <th class="admin-badge">Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>1</td><td><strong>Seshamma Garu</strong></td><td>78</td><td>F</td><td>2018</td><td><span class="badge badge-green">Stable</span></td><td>Daughter - Lakshmi</td></tr>
-              <tr><td>2</td><td><strong>Venkateswarlu Garu</strong></td><td>82</td><td>M</td><td>2019</td><td><span class="badge badge-yellow">BP/Diabetes</span></td><td>Son - Ramesh</td></tr>
-              <tr><td>3</td><td><strong>Mangamma Garu</strong></td><td>75</td><td>F</td><td>2019</td><td><span class="badge badge-red">Arthritis</span></td><td>Son - Suresh</td></tr>
-              <tr><td>4</td><td><strong>Subba Rao Garu</strong></td><td>80</td><td>M</td><td>2020</td><td><span class="badge badge-yellow">Diabetes</span></td><td>Daughter - Priya</td></tr>
-              <tr><td>5</td><td><strong>Ananthamma Garu</strong></td><td>72</td><td>F</td><td>2020</td><td><span class="badge badge-green">Stable</span></td><td>Son - Krishna</td></tr>
-              <tr><td>6</td><td><strong>Ramulu Garu</strong></td><td>85</td><td>M</td><td>2018</td><td><span class="badge badge-blue">Heart Condition</span></td><td>Son - Prasad</td></tr>
-              <tr><td>7</td><td><strong>Nagarathnamma Garu</strong></td><td>70</td><td>F</td><td>2021</td><td><span class="badge badge-green">Stable</span></td><td>Daughter - Sunitha</td></tr>
-              <tr><td>8</td><td><strong>Pullaiah Garu</strong></td><td>79</td><td>M</td><td>2021</td><td><span class="badge badge-yellow">BP</span></td><td>Son - Mahesh</td></tr>
-              <tr><td>9</td><td><strong>Adilakshmi Garu</strong></td><td>76</td><td>F</td><td>2022</td><td><span class="badge badge-green">Stable</span></td><td>Son - Vijay</td></tr>
-              <tr><td>10</td><td><strong>Narayana Garu</strong></td><td>83</td><td>M</td><td>2022</td><td><span class="badge badge-red">Arthritis/Knee Pain</span></td><td>Daughter - Anitha</td></tr>
-              <tr><td>11</td><td><strong>Rangamma Garu</strong></td><td>74</td><td>F</td><td>2022</td><td><span class="badge badge-green">Stable</span></td><td>Son - Srinivas</td></tr>
-              <tr><td>12</td><td><strong>Venkata Ratnam Garu</strong></td><td>81</td><td>M</td><td>2023</td><td><span class="badge badge-yellow">Diabetes/BP</span></td><td>Son - Raju</td></tr>
-              <tr><td>13</td><td><strong>Buchchamma Garu</strong></td><td>73</td><td>F</td><td>2023</td><td><span class="badge badge-green">Stable</span></td><td>Daughter - Padma</td></tr>
-              <tr><td>14</td><td><strong>Koteswara Rao Garu</strong></td><td>84</td><td>M</td><td>2023</td><td><span class="badge badge-blue">Heart/BP</span></td><td>Son - Vinod</td></tr>
-              <tr><td>15</td><td><strong>Subhadramma Garu</strong></td><td>71</td><td>F</td><td>2024</td><td><span class="badge badge-green">Stable</span></td><td>Son - Satish</td></tr>
-              <tr><td>16</td><td><strong>Mohan Rao Garu</strong></td><td>77</td><td>M</td><td>2024</td><td><span class="badge badge-yellow">BP</span></td><td>Daughter - Swapna</td></tr>
-              <tr><td>17</td><td><strong>Kanthamma Garu</strong></td><td>78</td><td>F</td><td>2024</td><td><span class="badge badge-green">Stable</span></td><td>Son - Ravi</td></tr>
-              <tr><td>18</td><td><strong>Surya Narayana Garu</strong></td><td>86</td><td>M</td><td>2024</td><td><span class="badge badge-red">Arthritis</span></td><td>Son - Harish</td></tr>
-              <tr><td>19</td><td><strong>Easwaramma Garu</strong></td><td>75</td><td>F</td><td>2025</td><td><span class="badge badge-green">Stable</span></td><td>Daughter - Radha</td></tr>
-              <tr><td>20</td><td><strong>Rama Krishna Garu</strong></td><td>80</td><td>M</td><td>2025</td><td><span class="badge badge-yellow">Diabetes</span></td><td>Son - Phanindra</td></tr>
-              <tr><td>21</td><td><strong>Gowramma Garu</strong></td><td>73</td><td>F</td><td>2025</td><td><span class="badge badge-green">Stable</span></td><td>Son - Venkat</td></tr>
-              <tr><td>22</td><td><strong>Veera Raghavulu Garu</strong></td><td>82</td><td>M</td><td>2025</td><td><span class="badge badge-blue">Heart Condition</span></td><td>Daughter - Lalitha</td></tr>
-              <tr><td>23</td><td><strong>Punnamma Garu</strong></td><td>76</td><td>F</td><td>2026</td><td><span class="badge badge-green">Stable</span></td><td>Son - Naveen</td></tr>
-              <tr><td>24</td><td><strong>Siva Nagaiah Garu</strong></td><td>79</td><td>M</td><td>2026</td><td><span class="badge badge-yellow">BP</span></td><td>Son - Sridhar</td></tr>
-            </tbody>
+            <tbody id="residentsTableBody"></tbody>
           </table>
         </div>
       </div>
 
       <!-- ====== ATTENDANCE PANEL ====== -->
-      <div class="oah-panel admin-only" id="attendance">
-        <div class="attendance-legend">
-          <span><span class="att-legend-dot p"></span> Present</span>
-          <span><span class="att-legend-dot a"></span> Absent</span>
-          <span><span class="att-legend-dot na"></span> Not Marked</span>
+      <div class="admin-only oah-panel" id="attendancePanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-clipboard-check"></i> Attendance</div>
+        <div class="attendance-controls">
+          <div>
+            <label>Select Date:</label>
+            <input type="date" id="attendanceDate">
+          </div>
+          <button class="btn btn-primary" onclick="loadAttendanceForDate()"><i class="fas fa-search"></i> View Attendance</button>
+          <button class="btn btn-outline-oah" onclick="markAllForDate('present')"><i class="fas fa-check"></i> Mark All Present</button>
+          <button class="btn btn-outline-oah" onclick="markAllForDate('absent')" style="border-color:#EF4444;color:#EF4444;"><i class="fas fa-times"></i> Mark All Absent</button>
         </div>
-        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;"><i class="fas fa-info-circle"></i> Click on a dot to toggle attendance</p>
         <div class="oah-table-wrap">
           <table class="oah-table">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Resident</th>
-                <th style="text-align:center;">Today (14 May)</th>
-                <th style="text-align:center;">13 May</th>
-                <th style="text-align:center;">12 May</th>
-                <th style="text-align:center;">11 May</th>
-                <th style="text-align:center;">10 May</th>
-                <th style="text-align:center;">This Week %</th>
+                <th style="text-align:center;">Attendance</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>1</td><td>Seshamma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>2</td><td>Venkateswarlu Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot absent">A</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-              <tr><td>3</td><td>Mangamma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>4</td><td>Subba Rao Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot absent">A</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-              <tr><td>5</td><td>Ananthamma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>6</td><td>Ramulu Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot absent">A</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-              <tr><td>7</td><td>Nagarathnamma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>8</td><td>Pullaiah Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>9</td><td>Adilakshmi Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot absent">A</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-              <tr><td>10</td><td>Narayana Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>11</td><td>Rangamma Garu</td><td style="text-align:center;"><span class="attendance-dot" onclick="toggleAttendance(this)">-</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-              <tr><td>12</td><td>Venkata Ratnam Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>13</td><td>Buchchamma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>14</td><td>Koteswara Rao Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot absent">A</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-              <tr><td>15</td><td>Subhadramma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>16</td><td>Mohan Rao Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>17</td><td>Kanthamma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>18</td><td>Surya Narayana Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot absent">A</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-              <tr><td>19</td><td>Easwaramma Garu</td><td style="text-align:center;"><span class="attendance-dot" onclick="toggleAttendance(this)">-</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-              <tr><td>20</td><td>Rama Krishna Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>21</td><td>Gowramma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>22</td><td>Veera Raghavulu Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>23</td><td>Punnamma Garu</td><td style="text-align:center;"><span class="attendance-dot present" onclick="toggleAttendance(this)">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>100%</strong></td></tr>
-              <tr><td>24</td><td>Siva Nagaiah Garu</td><td style="text-align:center;"><span class="attendance-dot" onclick="toggleAttendance(this)">-</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><span class="attendance-dot present">P</span></td><td style="text-align:center;"><strong>80%</strong></td></tr>
-            </tbody>
+            <tbody id="attendanceTableBody"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- ====== MEDICAL REPORTS PANEL ====== -->
-      <div class="oah-panel admin-only" id="medical">
-        <div class="medical-grid">
-          <div class="medical-card">
-            <h3>Venkateswarlu Garu <span class="badge badge-yellow" style="margin-left:8px;">BP/Diabetes</span></h3>
-            <div class="condition">Age: 82 | Check-up: 10 May 2026</div>
-            <ul class="med-list">
-              <li><span class="med-name">Amlodipine 5mg</span><span class="med-time">Morning 8am</span></li>
-              <li><span class="med-name">Metformin 500mg</span><span class="med-time">After breakfast & dinner</span></li>
-              <li><span class="med-name">Aspirin 75mg</span><span class="med-time">Morning 8am</span></li>
-            </ul>
-            <div style="margin-top:10px;font-size:12px;color:var(--text-light);"><i class="fas fa-stethoscope"></i> Dr. Rama Devi - Last visit: 10 May</div>
+      <!-- ====== MEDICAL PANEL ====== -->
+      <div class="admin-only oah-panel" id="medicalPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-notes-medical"></i> Medical Reports</div>
+        <div class="oah-med-within">
+          <div id="medicalList"></div>
+          <button class="btn btn-primary" onclick="addMedicalReport()" style="margin-top:10px;"><i class="fas fa-plus"></i> Add Medical Report</button>
+        </div>
+      </div>
+
+      <!-- ====== DONORS PANEL ====== -->
+      <div class="admin-only oah-panel" id="donorsPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-donate"></i> Recent Donors</div>
+        <div style="padding:15px 20px;">
+          <div class="admin-actions-bar">
+            <button class="btn btn-primary" onclick="addDonor()"><i class="fas fa-plus"></i> Add Donor</button>
+            <button class="btn btn-outline-oah" onclick="exportDonorsExcel()"><i class="fas fa-file-excel"></i> Export to Excel</button>
           </div>
-          <div class="medical-card">
-            <h3>Mangamma Garu <span class="badge badge-red" style="margin-left:8px;">Arthritis</span></h3>
-            <div class="condition">Age: 75 | Check-up: 08 May 2026</div>
-            <ul class="med-list">
-              <li><span class="med-name">Paracetamol 650mg</span><span class="med-time">As needed for pain</span></li>
-              <li><span class="med-name">Calcium + Vitamin D</span><span class="med-time">Morning 8am</span></li>
-              <li><span class="med-name">Omeprazole 20mg</span><span class="med-time">Before breakfast</span></li>
-            </ul>
-            <div style="margin-top:10px;font-size:12px;color:var(--text-light);"><i class="fas fa-stethoscope"></i> Dr. Sridhar - Last visit: 08 May</div>
-          </div>
-          <div class="medical-card">
-            <h3>Subba Rao Garu <span class="badge badge-yellow" style="margin-left:8px;">Diabetes</span></h3>
-            <div class="condition">Age: 80 | Check-up: 05 May 2026</div>
-            <ul class="med-list">
-              <li><span class="med-name">Glimepiride 2mg</span><span class="med-time">Morning 8am</span></li>
-              <li><span class="med-name">Metformin 500mg</span><span class="med-time">After meals</span></li>
-            </ul>
-            <div style="margin-top:10px;font-size:12px;color:var(--text-light);"><i class="fas fa-flask"></i> Fasting Sugar: 140 mg/dL</div>
-          </div>
-          <div class="medical-card">
-            <h3>Ramulu Garu <span class="badge badge-blue" style="margin-left:8px;">Heart Condition</span></h3>
-            <div class="condition">Age: 85 | Check-up: 12 May 2026</div>
-            <ul class="med-list">
-              <li><span class="med-name">Metoprolol 25mg</span><span class="med-time">Morning & Evening</span></li>
-              <li><span class="med-name">Atorvastatin 10mg</span><span class="med-time">Night 9pm</span></li>
-              <li><span class="med-name">Aspirin 75mg</span><span class="med-time">Morning 8am</span></li>
-              <li><span class="med-name">Furosemide 40mg</span><span class="med-time">Morning 8am</span></li>
-            </ul>
-            <div style="margin-top:10px;font-size:12px;color:var(--text-light);"><i class="fas fa-stethoscope"></i> Dr. Srinivas - Last visit: 12 May</div>
-          </div>
-          <div class="medical-card">
-            <h3>Narayana Garu <span class="badge badge-red" style="margin-left:8px;">Arthritis/Knee Pain</span></h3>
-            <div class="condition">Age: 83 | Check-up: 06 May 2026</div>
-            <ul class="med-list">
-              <li><span class="med-name">Accelofenac 100mg</span><span class="med-time">After breakfast</span></li>
-              <li><span class="med-name">Calcium + Vitamin D</span><span class="med-time">Morning 8am</span></li>
-              <li><span class="med-name">Omeprazole 20mg</span><span class="med-time">Before breakfast</span></li>
-            </ul>
-            <div style="margin-top:10px;font-size:12px;color:var(--text-light);"><i class="fas fa-wheelchair"></i> Physiotherapy: Mon/Wed/Fri 10am</div>
-          </div>
-          <div class="medical-card">
-            <h3>Surya Narayana Garu <span class="badge badge-red" style="margin-left:8px;">Arthritis</span></h3>
-            <div class="condition">Age: 86 | Check-up: 02 May 2026</div>
-            <ul class="med-list">
-              <li><span class="med-name">Etoricoxib 60mg</span><span class="med-time">After breakfast</span></li>
-              <li><span class="med-name">Calcium + Vitamin D</span><span class="med-time">Morning</span></li>
-            </ul>
-            <div style="margin-top:10px;font-size:12px;color:var(--text-light);"><i class="fas fa-wheelchair"></i> Physiotherapy: Tue/Thu/Sat 9am</div>
-          </div>
-          <div class="medical-card">
-            <h3>Koteswara Rao Garu <span class="badge badge-blue" style="margin-left:8px;">Heart/BP</span></h3>
-            <div class="condition">Age: 84 | Check-up: 09 May 2026</div>
-            <ul class="med-list">
-              <li><span class="med-name">Telmisartan 40mg</span><span class="med-time">Morning 8am</span></li>
-              <li><span class="med-name">Atorvastatin 10mg</span><span class="med-time">Night 9pm</span></li>
-              <li><span class="med-name">Aspirin 75mg</span><span class="med-time">Morning 8am</span></li>
-            </ul>
-            <div style="margin-top:10px;font-size:12px;color:var(--text-light);"><i class="fas fa-heart"></i> BP: 130/85 (Last reading)</div>
-          </div>
-          <div class="medical-card">
-            <h3>Venkata Ratnam Garu <span class="badge badge-yellow" style="margin-left:8px;">Diabetes/BP</span></h3>
-            <div class="condition">Age: 81 | Check-up: 11 May 2026</div>
-            <ul class="med-list">
-              <li><span class="med-name">Glimepiride 2mg</span><span class="med-time">Morning 8am</span></li>
-              <li><span class="med-name">Metformin 500mg</span><span class="med-time">After meals</span></li>
-              <li><span class="med-name">Telmisartan 40mg</span><span class="med-time">Morning 8am</span></li>
-            </ul>
-            <div style="margin-top:10px;font-size:12px;color:var(--text-light);"><i class="fas fa-flask"></i> Fasting Sugar: 152 mg/dL | BP: 135/85</div>
+          <div class="donors-grid-admin" id="donorsListAdmin"></div>
+        </div>
+      </div>
+
+      <!-- ====== NOTIFICATIONS PANEL ====== -->
+      <div class="admin-only oah-panel" id="notificationsPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-bell"></i> Notifications <span id="notifBadge" style="display:none;margin-left:8px;background:#EF4444;color:#fff;font-size:11px;padding:2px 8px;border-radius:20px;"></span></div>
+        <div style="padding:15px 20px;">
+          <div id="notificationsList"></div>
+        </div>
+      </div>
+
+      <!-- ====== EXPORT PANEL ====== -->
+      <div class="admin-only oah-panel" id="exportPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-file-excel"></i> Export Data</div>
+        <div style="padding:20px;">
+          <p style="color:var(--text-light);margin-bottom:15px;">Download data as Excel (.xlsx) files for record keeping.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="exportAttendanceExcel()"><i class="fas fa-clipboard-check"></i> Attendance Data</button>
+            <button class="btn btn-primary" onclick="exportMedicalExcel()"><i class="fas fa-notes-medical"></i> Medical Reports</button>
+            <button class="btn btn-primary" onclick="exportDonorsExcel()"><i class="fas fa-donate"></i> Donors Data</button>
+            <button class="btn btn-primary" onclick="exportResidentsExcel()"><i class="fas fa-users"></i> Residents Data</button>
           </div>
         </div>
       </div>
 
-      <!-- ====== MENU PANEL ====== -->
-      <!-- ====== MENU (always visible) ====== -->
-      <div style="margin-top:40px;padding-top:30px;border-top:2px solid var(--cream-dark);">
-        <h3 style="text-align:center;font-size:26px;margin-bottom:10px;">Weekly <span style="background:linear-gradient(135deg,#F59E0B,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Menu</span></h3>
-        <p style="text-align:center;color:var(--text-light);margin-bottom:25px;"><i class="fas fa-heart" style="color:var(--primary);"></i> Nutritious & balanced meals prepared with love for our elders</p>
-        <div class="menu-grid">
-          <div class="menu-card">
-            <div class="day">Sunday</div>
-            <div class="meal"><strong>Breakfast:</strong> Idli, Sambar, Chutney</div>
-            <div class="meal"><strong>Lunch:</strong> Rice, Dal, Palak Paneer, Salad</div>
-            <div class="meal"><strong>Snacks:</strong> Fruits, Milk</div>
-            <div class="meal"><strong>Dinner:</strong> Chapati, Mixed Veg Curry, Kheer</div>
-          </div>
-          <div class="menu-card">
-            <div class="day">Monday</div>
-            <div class="meal"><strong>Breakfast:</strong> Pongal, Vada, Chutney</div>
-            <div class="meal"><strong>Lunch:</strong> Rice, Sambar, Bendakaya Fry, Curd</div>
-            <div class="meal"><strong>Snacks:</strong> Tea, Biscuits</div>
-            <div class="meal"><strong>Dinner:</strong> Dosa, Potato Curry, Payasam</div>
-          </div>
-          <div class="menu-card">
-            <div class="day">Tuesday</div>
-            <div class="meal"><strong>Breakfast:</strong> Upma, Coconut Chutney</div>
-            <div class="meal"><strong>Lunch:</strong> Rice, Rasam, Guttivankaya Curry</div>
-            <div class="meal"><strong>Snacks:</strong> Banana, Buttermilk</div>
-            <div class="meal"><strong>Dinner:</strong> Chapati, Chana Masala, Rice Kheer</div>
-          </div>
-          <div class="menu-card">
-            <div class="day">Wednesday</div>
-            <div class="meal"><strong>Breakfast:</strong> Poori, Aloo Curry, Chutney</div>
-            <div class="meal"><strong>Lunch:</strong> Rice, Pulihora, Papad, Curd</div>
-            <div class="meal"><strong>Snacks:</strong> Sprouts, Lemon Water</div>
-            <div class="meal"><strong>Dinner:</strong> Lemon Rice, Pumpkin Sambar</div>
-          </div>
-          <div class="menu-card">
-            <div class="day">Thursday</div>
-            <div class="meal"><strong>Breakfast:</strong> Rava Dosa, Coconut Chutney</div>
-            <div class="meal"><strong>Lunch:</strong> Rice, Tomato Dal, Cabbage Poriyal</div>
-            <div class="meal"><strong>Snacks:</strong> Fruit Salad, Milk</div>
-            <div class="meal"><strong>Dinner:</strong> Chapati, Dal Tadka, Gulab Jamun</div>
-          </div>
-          <div class="menu-card">
-            <div class="day">Friday</div>
-            <div class="meal"><strong>Breakfast:</strong> Chapati, Chole, Salad</div>
-            <div class="meal"><strong>Lunch:</strong> Rice, Fish Curry / Veg Kurma, Curd</div>
-            <div class="meal"><strong>Snacks:</strong> Roasted Chana, Tea</div>
-            <div class="meal"><strong>Dinner:</strong> Appam / Idiyappam, Stew</div>
-          </div>
-          <div class="menu-card">
-            <div class="day">Saturday</div>
-            <div class="meal"><strong>Breakfast:</strong> Bonda, Sambar, Chutney</div>
-            <div class="meal"><strong>Lunch:</strong> Rice, Brinjal Curry, Rasam, Papad</div>
-            <div class="meal"><strong>Snacks:</strong> Dates, Dry Fruits</div>
-            <div class="meal"><strong>Dinner:</strong> Veg Pulav, Raita, Sweet</div>
-          </div>
+      <!-- ====== MENU EDITOR PANEL ====== -->
+      <div class="admin-only oah-panel" id="menuEditorPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-utensils"></i> Menu Editor</div>
+        <div style="padding:20px;">
+          <p style="color:var(--text-light);margin-bottom:15px;">Edit the weekly menu for each day.</p>
+          <div id="menuEditorForm"></div>
+          <button class="btn btn-primary" onclick="saveMenuEditor()" style="margin-top:15px;"><i class="fas fa-save"></i> Save Menu</button>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Admin Login Button (at bottom) -->
+  <!-- Admin Login Button -->
   <div style="text-align:center;padding:20px;background:var(--cream-dark);" id="adminControls">
     <button class="btn btn-outline-oah" id="adminLoginBtn" onclick="showAdminLogin()"><i class="fas fa-lock"></i> Admin Portal</button>
     <button class="btn btn-primary" id="adminLogoutBtn" onclick="adminLogout()" style="display:none;"><i class="fas fa-unlock"></i> Logout Admin</button>
@@ -413,11 +460,10 @@
           <div class="logo-text" style="color: #fff; margin-bottom: 15px;">Prajwala Community <span>Development Society</span></div>
           <p>We serve people, we build nature &amp; culture — through education, healthcare, and sustainable development.</p>
           <div class="social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/pcdsguntur/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/pcds2026/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
         <div class="footer-col">
@@ -425,8 +471,7 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#about">About Us</a></li>
-            <li><a href="index.html#teams">Our Teams</a></li>
-            <li><a href="index.html#events">Events</a></li>
+            <li><a href="teams.html">Our Teams</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="oldage-home.html">Old Age Home</a></li>
             <li><a href="index.html#contact">Contact</a></li>
@@ -443,16 +488,9 @@
             <li><a href="oldage-home.html">Old Age Home</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h3>Newsletter</h3>
-          <div class="newsletter">
-            <input type="email" placeholder="Your email address">
-            <button type="button">Subscribe</button>
-          </div>
-        </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 Our NGO. All rights reserved.</span>
+        <span>&copy; 2026 Prajwala Community Development Society. All rights reserved.</span>
         <div><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
       </div>
     </div>
@@ -460,14 +498,11 @@
 
   <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-
-
   <script src="js/script.js"></script>
   <script>
-    // Display today's date
-    const d = new Date();
-    const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('currentDate').textContent = d.toLocaleDateString('en-IN', opts);
+    // Initialize today's date for attendance
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('attendanceDate').value = today;
   </script>
 </body>
 </html>
