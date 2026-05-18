@@ -291,7 +291,9 @@ const translations = {
     'Please fill in all required fields.': 'దయచేసి అన్ని తప్పనిసరి ఫీల్డ్‌లను పూరించండి.',
     'Please enter a valid donation amount.': 'దయచేసి చెల్లుబాటు అయ్యే విరాళం మొత్తాన్ని నమోదు చేయండి.',
     'Sowmya Multi Speciality Dental Clinic': 'సౌమ్య మల్టీ స్పెషాలిటీ డెంటల్ క్లినిక్',
-    'Dr. Sowmya, B.D.S.; F.A.G.E. Cosmetic Dental Surgeon': 'డా. సౌమ్య, B.D.S.; F.A.G.E. కాస్మెటిక్ డెంటల్ సర్జన్',
+    'Dr. Ch. Sowmya, B.D.S.; F.A.G.E. Cosmetic Dental Surgeon': 'డా. సిహెచ్. సౌమ్య, B.D.S.; F.A.G.E. కాస్మెటిక్ డెంటల్ సర్జన్',
+    'Dr. Ch. Sowmya & Dr. Ch. Naveen': 'డా. సిహెచ్. సౌమ్య & డా. సిహెచ్. నవీన్',
+    'Dr. Ch. Naveen, M.D.S. Prosthodontics & Implantologist': 'డా. సిహెచ్. నవీన్, M.D.S. ప్రోస్టోడాంటిక్స్ & ఇంప్లాంటాలజిస్ట్',
     'Kothapet, Guntur': 'కోతపేట, గుంటూరు',
     'Reakha Clinic': 'రేఖా క్లినిక్',
     'Dr. Sahan Kumar Garu': 'డా. సాహన్ కుమార్ గారు',
@@ -299,6 +301,18 @@ const translations = {
     'Rafa Labs': 'రాఫా ల్యాబ్స్',
     'R.Agraharam': 'ఆర్.అగ్రహారం',
     'B. Sharmila': 'బి. శర్మిల',
+    'Dr. Krishna Bharath': 'డా. కృష్ణ భరత్',
+    'B. Krishnabharath': 'బి. కృష్ణభరత్',
+    'Psychologist': 'సైకాలజిస్ట్',
+    'Founder President': 'వ్యవస్థాపక అధ్యక్షుడు',
+    'Advanced Psychological services Association (APA India)': 'అడ్వాన్స్డ్ సైకలాజికల్ సర్వీసెస్ అసోసియేషన్ (APA ఇండియా)',
+    'Hyderabad': 'హైదరాబాద్',
+    'Dr. Sahan Kumar': 'డా. సాహన్ కుమార్',
+    'REAKHA CLINIC': 'రేఖా క్లినిక్',
+    'B. Keerthi': 'బి. కీర్తి',
+    'B. Keertthi': 'బి. కీర్తి',
+    'M.P.H.W.(F)': 'M.P.H.W.(F)',
+    'GNM Nurse': 'GNM నర్స్',
     'UPI QR Code': 'UPI QR కోడ్',
     'Swacch Bharat 1': 'స్వచ్ఛ భారత్ 1',
     'Swacch Bharat 2': 'స్వచ్ఛ భారత్ 2',
@@ -500,17 +514,13 @@ function initForms() {
       e.preventDefault();
       if (form.classList.contains('volunteer-form')) {
         const vf = {
-          id: Date.now(),
           name: form.querySelector('.vf-name').value,
           email: form.querySelector('.vf-email').value,
           phone: form.querySelector('.vf-phone').value,
           interest: form.querySelector('.vf-interest').value,
-          message: form.querySelector('.vf-message').value,
-          date: new Date().toISOString().split('T')[0]
+          message: form.querySelector('.vf-message').value
         };
-        const existing = JSON.parse(localStorage.getItem('volunteer_submissions') || '[]');
-        existing.push(vf);
-        localStorage.setItem('volunteer_submissions', JSON.stringify(existing));
+        if (typeof apiSubmitVolunteer === 'function') apiSubmitVolunteer(vf);
         alert('Thank you for your application! We will get back to you soon.');
       } else {
         alert('Thank you! Your message has been received. We will get back to you soon.');
@@ -542,14 +552,51 @@ function openLightbox(src) {
 function initAssocScroll() {
   const container = document.getElementById('assocScroll');
   if (!container) return;
-  setInterval(() => {
-    const max = container.scrollWidth - container.clientWidth;
-    if (container.scrollLeft >= max) {
-      container.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      container.scrollBy({ left: 320, behavior: 'smooth' });
+  const cards = container.querySelectorAll('.assoc-card');
+  if (cards.length < 2) return;
+  let current = 0;
+  let interval;
+
+  function goTo(index) {
+    if (index < 0) index = cards.length - 1;
+    if (index >= cards.length) index = 0;
+    current = index;
+    const card = cards[current];
+    const offset = card.offsetLeft - (container.clientWidth - card.offsetWidth) / 2;
+    container.scrollTo({ left: offset, behavior: 'smooth' });
+    updateDots();
+  }
+
+  function next() { goTo(current + 1); }
+
+  function startAuto() { interval = setInterval(next, 3000); }
+  function stopAuto() { clearInterval(interval); }
+
+  container.addEventListener('mouseenter', stopAuto);
+  container.addEventListener('mouseleave', startAuto);
+
+  const wrapper = container.parentElement;
+  let dotsContainer = wrapper.querySelector('.assoc-dots');
+  if (!dotsContainer) {
+    dotsContainer = document.createElement('div');
+    dotsContainer.className = 'assoc-dots';
+    wrapper.appendChild(dotsContainer);
+  }
+  function updateDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < cards.length; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'assoc-dot' + (i === current ? ' active' : '');
+      dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+      dotsContainer.appendChild(dot);
     }
-  }, 1500);
+  }
+
+  cards.forEach(c => c.addEventListener('click', stopAuto));
+
+  updateDots();
+  setTimeout(() => goTo(0), 100);
+  startAuto();
 }
 
 // ─── ADMIN ───
@@ -564,9 +611,16 @@ function showAdminLogin() {
 function closeAdminLogin() {
   document.getElementById('adminModal')?.classList.remove('open');
 }
-function adminLogin() {
+async function adminLogin() {
   const pw = document.getElementById('adminPassword')?.value;
-  if (pw === ADMIN_PASSWORD) {
+  let ok = false;
+  try {
+    if (typeof apiAdminLogin === 'function') {
+      ok = await apiAdminLogin(pw);
+    }
+  } catch (e) {}
+  if (!ok) ok = (pw === ADMIN_PASSWORD);
+  if (ok) {
     document.body.classList.add('admin-logged-in');
     closeAdminLogin();
     const loginBtn = document.getElementById('adminLoginBtn');
@@ -648,20 +702,14 @@ const defaultOAHData = {
 };
 
 function getOAHData() {
-  try {
-    const saved = localStorage.getItem(OAH_STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Ensure donors array exists for backward compatibility
-      if (!parsed.donors) parsed.donors = defaultOAHData.donors;
-      return parsed;
-    }
-  } catch (e) {}
+  if (typeof _cachedOahData !== 'undefined' && _cachedOahData) {
+    return _cachedOahData;
+  }
   return JSON.parse(JSON.stringify(defaultOAHData));
 }
 
 function saveOAHData(data) {
-  localStorage.setItem(OAH_STORAGE_KEY, JSON.stringify(data));
+  _cachedOahData = data;
 }
 
 // ─── OAH MAIN RENDER ───
@@ -1153,7 +1201,10 @@ function renderOAHNotifications() {
   });
 
   // Volunteer submissions
-  const volunteers = JSON.parse(localStorage.getItem('volunteer_submissions') || '[]');
+  let volunteers = [];
+  if (typeof _cachedVolunteers !== 'undefined') {
+    volunteers = _cachedVolunteers || [];
+  }
 
   let html = '';
 
@@ -1367,12 +1418,34 @@ if (!document.getElementById('adminEditStyles')) {
   document.head.appendChild(s);
 }
 
+let _cachedVolunteers = null;
+
+async function loadApiData() {
+  try {
+    if (typeof apiLoadAllOahData === 'function') {
+      await apiLoadAllOahData();
+    }
+    if (typeof apiGetVolunteers === 'function') {
+      _cachedVolunteers = await apiGetVolunteers();
+    }
+  } catch (e) {
+    // API not available, fall back to localStorage
+  }
+  initOAH();
+}
+
 initPage();
 
 const isOAH = window.location.pathname.includes('oldage-home');
 const isGallery = window.location.pathname.includes('gallery');
 
-if (isOAH) initOAH();
+if (isOAH) {
+  if (typeof apiLoadAllOahData === 'function') {
+    loadApiData();
+  } else {
+    initOAH();
+  }
+}
 if (isGallery) {
   // Gallery admin is handled inline in gallery.html
 }
@@ -1381,7 +1454,7 @@ if (document.body.classList.contains('admin-logged-in')) {
   const logoutBtn = document.getElementById('adminLogoutBtn');
   if (loginBtn) loginBtn.style.display = 'none';
   if (logoutBtn) logoutBtn.style.display = 'inline-flex';
-  if (isOAH) initOAH();
+  if (isOAH && typeof apiLoadAllOahData !== 'function') initOAH();
   if (isGallery) {
     document.querySelectorAll('.admin-img-actions').forEach(el => el.style.display = 'flex');
   }

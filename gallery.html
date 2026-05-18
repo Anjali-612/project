@@ -131,6 +131,7 @@
     </div>
   </footer>
 
+  <script src="js/api.js"></script>
   <script src="js/script.js"></script>
   <script>
     const galleryFolders = {
@@ -161,7 +162,19 @@
       }
     };
 
-    function loadFolderData() {
+    async function loadFolderData() {
+      try {
+        if (typeof apiGetGallery === 'function') {
+          const apiData = await apiGetGallery();
+          if (apiData && Object.keys(apiData).length > 0) {
+            Object.keys(apiData).forEach(k => {
+              galleryFolders[k] = { ...galleryFolders[k], ...apiData[k] };
+            });
+            return;
+          }
+        }
+      } catch (e) {}
+      // Fallback: try localStorage
       const saved = localStorage.getItem('prajwala_gallery_folders');
       if (saved) {
         try {
@@ -178,11 +191,21 @@
       }
     }
 
-    function saveFolderData() {
+    async function saveFolderData() {
       const data = {};
       Object.keys(galleryFolders).forEach(k => {
-        data[k] = { title: galleryFolders[k].title, images: galleryFolders[k].images };
+        data[k] = { title: galleryFolders[k].title, desc: galleryFolders[k].desc, images: galleryFolders[k].images };
       });
+      try {
+        if (typeof apiGetGallery === 'function') {
+          for (const [key, val] of Object.entries(data)) {
+            if (typeof apiUpdateGalleryFolder === 'function') {
+              await apiUpdateGalleryFolder(key, { title: val.title, desc: val.desc, images: val.images });
+            }
+          }
+          return;
+        }
+      } catch (e) {}
       localStorage.setItem('prajwala_gallery_folders', JSON.stringify(data));
     }
 
@@ -207,8 +230,10 @@
       });
     }
 
-    loadFolderData();
-    renderGalleryFolders();
+    (async function() {
+      await loadFolderData();
+      renderGalleryFolders();
+    })();
 
     function showFolder(key) {
       const folder = galleryFolders[key];
@@ -254,43 +279,49 @@
       document.getElementById('folderViewContainer').style.display = 'none';
     }
 
-    function editImage(key, idx) {
+    async function editImage(key, idx) {
       const newSrc = prompt('Enter new image URL:', galleryFolders[key].images[idx]);
       if (newSrc && newSrc.trim()) {
         galleryFolders[key].images[idx] = newSrc.trim();
-        saveFolderData();
+        await saveFolderData();
         showFolder(key);
       }
     }
 
-    function deleteImage(key, idx) {
+    async function deleteImage(key, idx) {
       if (!confirm('Delete this image?')) return;
       galleryFolders[key].images.splice(idx, 1);
-      saveFolderData();
+      await saveFolderData();
       showFolder(key);
     }
 
-    function addImage(key) {
+    async function addImage(key) {
       const newSrc = prompt('Enter image URL:');
       if (newSrc && newSrc.trim()) {
         galleryFolders[key].images.push(newSrc.trim());
-        saveFolderData();
+        await saveFolderData();
         showFolder(key);
       }
     }
 
-    function addNewFolder() {
+    async function addNewFolder() {
       const key = prompt('Enter folder key (no spaces, e.g. "newFolder"):');
       if (!key || !key.trim()) return;
       if (galleryFolders[key]) { alert('Folder key already exists!'); return; }
       const title = prompt('Enter folder display name:');
       if (!title || !title.trim()) return;
       galleryFolders[key] = { title: title.trim(), desc: '', images: [] };
-      saveFolderData();
+      try {
+        if (typeof apiAddGalleryFolder === 'function') {
+          await apiAddGalleryFolder(key, title.trim(), '', []);
+        }
+      } catch (e) {
+        await saveFolderData();
+      }
       location.reload();
     }
 
-    function editFolderMeta(key) {
+    async function editFolderMeta(key) {
       const folder = galleryFolders[key];
       const newTitle = prompt('Enter folder name:', folder.title);
       if (newTitle && newTitle.trim()) {
@@ -300,14 +331,20 @@
       if (newDesc !== null) {
         folder.desc = newDesc.trim();
       }
-      saveFolderData();
+      await saveFolderData();
       showFolder(key);
     }
 
-    function deleteFolder(key) {
+    async function deleteFolder(key) {
       if (!confirm('Delete this folder and all its images?')) return;
       delete galleryFolders[key];
-      saveFolderData();
+      try {
+        if (typeof apiDeleteGalleryFolder === 'function') {
+          await apiDeleteGalleryFolder(key);
+        }
+      } catch (e) {
+        await saveFolderData();
+      }
       location.reload();
     }
 

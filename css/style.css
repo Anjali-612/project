@@ -814,29 +814,113 @@ section { padding: 90px 0; }
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   gap: 25px;
-  margin-top: 50px;
-  padding-bottom: 20px;
+  margin-top: 30px;
+  padding: 20px 10px 20px;
   position: relative;
   z-index: 1;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 .assoc-scroll::-webkit-scrollbar { height: 0; }
 .assoc-card {
   text-align: center;
-  padding: 30px 25px;
-  background: rgba(255,255,255,0.05);
-  border-radius: var(--radius-lg);
+  padding: 40px 30px 30px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.08);
   transition: var(--transition);
   min-width: 280px;
   max-width: 320px;
   flex-shrink: 0;
   scroll-snap-align: start;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+.assoc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-1);
+  opacity: 0.6;
+}
+.assoc-card .assoc-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  border: 3px solid rgba(245,158,11,0.6);
+  display: block;
+  box-shadow: 0 0 0 6px rgba(245,158,11,0.1), 0 8px 30px rgba(0,0,0,0.3);
+  transition: var(--transition);
+}
+.assoc-card:hover .assoc-img {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 8px rgba(245,158,11,0.15), 0 12px 40px rgba(0,0,0,0.4);
+  transform: scale(1.02);
+}
+.assoc-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+.assoc-card .assoc-img + h4 { margin-top: 0; }
+.assoc-card p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 2px 0;
+}
+.assoc-card p strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+.assoc-loc {
+  display: block;
+  font-size: 12px;
+  margin-top: 10px;
+  color: rgba(245,158,11,0.7);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .assoc-card:hover {
   background: rgba(255,255,255,0.1);
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.assoc-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+}
+.assoc-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+.assoc-dot.active {
+  background: var(--primary);
+  box-shadow: 0 0 10px rgba(245,158,11,0.5);
+  width: 28px;
+  border-radius: 5px;
+}
+.assoc-dot:hover {
+  background: rgba(255,255,255,0.4);
 }
 .assoc-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
 .assoc-card p { font-size: 13px; opacity: 0.8; }
