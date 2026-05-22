@@ -9,7 +9,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '..')));
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // ─── ADMIN AUTH ───
 function requireAdmin(req, res, next) {
