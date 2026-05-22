@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Old Age Home - Prajwala Community Development Society</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .oah-hero {
+      height: 300px;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .oah-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://picsum.photos/seed/oldage/1920/600') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    .oah-hero h1 { font-size: 44px; font-weight: 900; position: relative; z-index: 1; }
+    .oah-hero h1 span { background: linear-gradient(135deg, #F59E0B, #EC4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .oah-hero p { position: relative; z-index: 1; opacity: 0.7; margin-top: 8px; font-size: 17px; }
+
+    .oah-section-bar {
+      background: var(--gradient-1);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .oah-section-bar i { font-size: 18px; }
+
+    .admin-actions-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0 15px;
+    }
+    .admin-actions-bar .btn { font-size: 13px; padding: 7px 16px; }
+
+    .oah-panel { 
+      margin-bottom: 30px; 
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--cream-dark);
+      overflow: hidden;
+    }
+    .oah-panel .oah-table-wrap { border-radius: 0; border: none; box-shadow: none; }
+    .oah-panel .oah-table th:first-child { border-radius: 0; }
+    .oah-panel .oah-table th:last-child { border-radius: 0; }
+
+    .attendance-controls {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 15px 20px;
+    }
+    .attendance-controls label { font-weight: 600; font-size: 14px; }
+    .attendance-controls input[type="date"] {
+      padding: 8px 12px;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .att-btn-group { display: flex; gap: 6px; }
+    .att-btn {
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 2px solid #E2E8F0;
+      background: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .att-btn.present { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .att-btn.absent { background: #EF4444; color: #fff; border-color: #EF4444; }
+
+    .notif-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      background: #fff;
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      border: 1px solid var(--cream-dark);
+    }
+    .notif-card .notif-info { flex: 1; }
+    .notif-card .notif-info h4 { font-size: 15px; margin-bottom: 2px; }
+    .notif-card .notif-info p { font-size: 13px; color: var(--text-light); }
+    .notif-card .notif-actions { display: flex; gap: 6px; }
+    .notif-card .notif-actions button { font-size: 12px; padding: 4px 12px; }
+
+    .donors-grid-admin {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .oah-actions-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .tab-bar-container {
+      background: var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 5px;
+      margin-bottom: 25px;
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .tab-bar-btn {
+      flex: 1;
+      min-width: 100px;
+      padding: 12px 18px;
+      border: none;
+      background: transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+      transition: all 0.3s;
+      text-align: center;
+    }
+    .tab-bar-btn.active {
+      background: var(--white);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      color: var(--primary);
+    }
+    .tab-bar-btn i { margin-right: 6px; }
+
+    .admin-badge { display: none; }
+    body.admin-logged-in .admin-badge { display: inline-flex; }
+
+    .oah-notif-bell {
+      position: relative;
+      display: inline-flex;
+    }
+    .oah-notif-bell .notif-count {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #EF4444;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .oah-med-within {
+      padding: 15px 20px;
+    }
+    .oah-med-within .resident-med-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 15px;
+      margin-bottom: 12px;
+      border: 1px solid var(--cream-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .oah-med-within .resident-med-card .med-info h4 { font-size: 15px; }
+    .oah-med-within .resident-med-card .med-info p { font-size: 13px; color: var(--text-light); }
+    .oah-med-within .resident-med-card .med-actions { display: flex; gap: 6px; }
+    .oah-med-within .resident-med-card .med-actions button { font-size: 11px; padding: 4px 10px; }
+    .med-next-checkup { 
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .med-next-checkup.upcoming { background: #FEF3C7; color: #92400E; }
+    .med-next-checkup.overdue { background: #FEE2E2; color: #991B1B; }
+    .med-next-checkup.done { background: #D1FAE5; color: #065F46; }
+    .admin-only { display: none; }
+    body.admin-logged-in .admin-only { display: revert; }
+    body.admin-logged-in .admin-only.tab-bar-container { display: flex; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="contact-info">
+        <span><i class="fas fa-phone"></i> +91 9502046096</span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:pcdsguntur19@gmail.com" style="color:inherit;text-decoration:none;">pcdsguntur19@gmail.com</a></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="social">
+          <a href="https://www.facebook.com/pcdsguntur/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/pcds2026/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sub-page-header">
+    <div class="container">
+      <a href="index.html" class="logo" style="color:var(--secondary);">
+        <img src="logo.png" alt="Prajwala Community Development Society" class="logo-img">
+        <div class="logo-text">Prajwala Community <span>Development Society</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="gallery.html" class="gallery-btn">Gallery</a></li>
+          <li><a href="oldage-home.html" class="active">Old Age Home</a></li>
+          <li><a href="index.html#join">Join Us</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+           <li><button class="lang-nav-btn" onclick="toggleLangNav()" id="langNavBtn">తెలుగు</button></li>
+           <li><a href="donate.html" class="donate-btn">Donate Now</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- OAH HERO -->
+  <div class="oah-hero">
+    <div>
+      <h1>Prajwala Community <span>Development Society</span></h1>
+      <p>Providing love, care & dignity to our elderly residents since 2018</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <section class="oah-page" style="padding-top:40px;">
+    <div class="container">
+
+      <!-- Dashboard Stats -->
+      <div class="oah-dashboard">
+        <div class="oah-stat">
+          <div class="oah-icon"><i class="fas fa-users"></i></div>
+          <span class="oah-number" id="totalResidents">24</span>
+          <span class="oah-label">Total Residents</span>
+        </div>
+        <div class="oah-stat green">
+          <div class="oah-icon"><i class="fas fa-check-circle"></i></div>
+          <span class="oah-number" id="presentToday">22</span>
+          <span class="oah-label">Present Today</span>
+        </div>
+        <div class="oah-stat pink">
+          <div class="oah-icon"><i class="fas fa-heartbeat"></i></div>
+          <span class="oah-number" id="medicalCount">6</span>
+          <span class="oah-label">Under Medical Care</span>
+        </div>
+        <div class="oah-stat blue">
+          <div class="oah-icon"><i class="fas fa-utensils"></i></div>
+          <span class="oah-number">3</span>
+          <span class="oah-label">Meals Daily</span>
+        </div>
+      </div>
+
+      <!-- Weekly Menu -->
+      <div style="margin-top:30px;padding-top:30px;border-top:2px solid var(--cream-dark);">
+        <h3 style="text-align:center;font-size:26px;margin-bottom:10px;">Weekly <span style="background:linear-gradient(135deg,#F59E0B,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Menu</span></h3>
+        <p style="text-align:center;color:var(--text-light);margin-bottom:25px;"><i class="fas fa-heart" style="color:var(--primary);"></i> Nutritious & balanced meals prepared with love for our elders</p>
+        <div class="menu-grid" id="menuGrid"></div>
+      </div>
+
+      <!-- PUBLIC Residents Table -->
+      <div class="oah-panel" id="publicResidentsSection">
+        <h3 style="padding:15px 20px;margin:0;font-size:18px;"><i class="fas fa-list"></i> Our Residents</h3>
+        <div class="oah-table-wrap">
+          <table class="oah-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Joined</th>
+                <th>Health Status</th>
+                <th>Relation</th>
+                <th>Contact No</th>
+              </tr>
+            </thead>
+            <tbody id="publicResidentsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin Login Modal -->
+      <div class="admin-modal" id="adminModal">
+        <div class="admin-modal-content">
+          <span class="admin-modal-close" onclick="closeAdminLogin()">&times;</span>
+          <h3><i class="fas fa-shield-alt"></i> Admin Login</h3>
+          <p>Enter admin password to manage Old Age Home</p>
+          <input type="password" id="adminPassword" placeholder="Enter admin password" onkeydown="if(event.key==='Enter') adminLogin()">
+          <button class="btn btn-primary" onclick="adminLogin()" style="margin-top:10px;width:100%;">Login</button>
+          <p id="adminError" style="color:#dc2626;font-size:13px;margin-top:8px;display:none;">Incorrect password</p>
+        </div>
+      </div>
+
+      <!-- ADMIN TAB BAR -->
+      <div class="admin-only tab-bar-container" id="adminTabBar">
+        <button class="tab-bar-btn active" onclick="switchAdminTab('residentsPanel')"><i class="fas fa-list"></i> Residents</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('attendancePanel')"><i class="fas fa-clipboard-check"></i> Attendance</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('medicalPanel')"><i class="fas fa-notes-medical"></i> Medical</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('donorsPanel')"><i class="fas fa-donate"></i> Donors</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('notificationsPanel')"><i class="fas fa-bell"></i> Notifications</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('exportPanel')"><i class="fas fa-file-excel"></i> Export</button>
+        <button class="tab-bar-btn" onclick="switchAdminTab('menuEditorPanel')"><i class="fas fa-utensils"></i> Menu Editor</button>
+      </div>
+
+      <!-- ====== RESIDENTS PANEL ====== -->
+      <div class="admin-only oah-panel" id="residentsPanel">
+        <div class="oah-section-bar"><i class="fas fa-list"></i> Residents</div>
+        <div class="admin-actions-bar" style="padding:10px 15px 0 15px;">
+          <button class="btn btn-primary" onclick="addResident()"><i class="fas fa-plus"></i> Add Resident</button>
+        </div>
+        <div class="oah-table-wrap">
+          <table class="oah-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Joined</th>
+                <th>Health Status</th>
+                <th>Relation</th>
+                <th>Contact No</th>
+                <th class="admin-badge">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="residentsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ====== ATTENDANCE PANEL ====== -->
+      <div class="admin-only oah-panel" id="attendancePanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-clipboard-check"></i> Attendance</div>
+        <div class="attendance-controls">
+          <div>
+            <label>Select Date:</label>
+            <input type="date" id="attendanceDate">
+          </div>
+          <button class="btn btn-primary" onclick="loadAttendanceForDate()"><i class="fas fa-search"></i> View Attendance</button>
+          <button class="btn btn-outline-oah" onclick="markAllForDate('present')"><i class="fas fa-check"></i> Mark All Present</button>
+          <button class="btn btn-outline-oah" onclick="markAllForDate('absent')" style="border-color:#EF4444;color:#EF4444;"><i class="fas fa-times"></i> Mark All Absent</button>
+        </div>
+        <div class="oah-table-wrap">
+          <table class="oah-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Resident</th>
+                <th style="text-align:center;">Attendance</th>
+              </tr>
+            </thead>
+            <tbody id="attendanceTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ====== MEDICAL PANEL ====== -->
+      <div class="admin-only oah-panel" id="medicalPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-notes-medical"></i> Medical Reports</div>
+        <div class="oah-med-within">
+          <div id="medicalList"></div>
+          <button class="btn btn-primary" onclick="addMedicalReport()" style="margin-top:10px;"><i class="fas fa-plus"></i> Add Medical Report</button>
+        </div>
+      </div>
+
+      <!-- ====== DONORS PANEL ====== -->
+      <div class="admin-only oah-panel" id="donorsPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-donate"></i> Recent Donors</div>
+        <div style="padding:15px 20px;">
+          <div class="admin-actions-bar">
+            <button class="btn btn-primary" onclick="addDonor()"><i class="fas fa-plus"></i> Add Donor</button>
+            <button class="btn btn-outline-oah" onclick="exportDonorsExcel()"><i class="fas fa-file-excel"></i> Export to Excel</button>
+          </div>
+          <div class="donors-grid-admin" id="donorsListAdmin"></div>
+        </div>
+      </div>
+
+      <!-- ====== NOTIFICATIONS PANEL ====== -->
+      <div class="admin-only oah-panel" id="notificationsPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-bell"></i> Notifications <span id="notifBadge" style="display:none;margin-left:8px;background:#EF4444;color:#fff;font-size:11px;padding:2px 8px;border-radius:20px;"></span></div>
+        <div style="padding:15px 20px;">
+          <div id="notificationsList"></div>
+        </div>
+      </div>
+
+      <!-- ====== EXPORT PANEL ====== -->
+      <div class="admin-only oah-panel" id="exportPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-file-excel"></i> Export Data</div>
+        <div style="padding:20px;">
+          <p style="color:var(--text-light);margin-bottom:15px;">Download data as Excel (.xlsx) files for record keeping.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="exportAttendanceExcel()"><i class="fas fa-clipboard-check"></i> Attendance Data</button>
+            <button class="btn btn-primary" onclick="exportMedicalExcel()"><i class="fas fa-notes-medical"></i> Medical Reports</button>
+            <button class="btn btn-primary" onclick="exportDonorsExcel()"><i class="fas fa-donate"></i> Donors Data</button>
+            <button class="btn btn-primary" onclick="exportResidentsExcel()"><i class="fas fa-users"></i> Residents Data</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== MENU EDITOR PANEL ====== -->
+      <div class="admin-only oah-panel" id="menuEditorPanel" style="display:none;">
+        <div class="oah-section-bar"><i class="fas fa-utensils"></i> Menu Editor</div>
+        <div style="padding:20px;">
+          <p style="color:var(--text-light);margin-bottom:15px;">Edit the weekly menu for each day.</p>
+          <div id="menuEditorForm"></div>
+          <button class="btn btn-primary" onclick="saveMenuEditor()" style="margin-top:15px;"><i class="fas fa-save"></i> Save Menu</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Admin Login Button -->
+  <div style="text-align:center;padding:20px;background:var(--cream-dark);" id="adminControls">
+    <button class="btn btn-outline-oah" id="adminLoginBtn" onclick="showAdminLogin()"><i class="fas fa-lock"></i> Admin Portal</button>
+    <button class="btn btn-primary" id="adminLogoutBtn" onclick="adminLogout()" style="display:none;"><i class="fas fa-unlock"></i> Logout Admin</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo-text" style="color: #fff; margin-bottom: 15px;">Prajwala Community <span>Development Society</span></div>
+          <p>We serve people, we build nature &amp; culture — through education, healthcare, and sustainable development.</p>
+          <div class="social">
+            <a href="https://www.facebook.com/pcdsguntur/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/pcds2026/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="teams.html">Our Teams</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="oldage-home.html">Old Age Home</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Our Programs</h3>
+          <ul>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Women Empowerment</a></li>
+            <li><a href="#">Skill Development</a></li>
+            <li><a href="oldage-home.html">Old Age Home</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Prajwala Community Development Society. All rights reserved.</span>
+        <div><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    // Initialize today's date for attendance
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('attendanceDate').value = today;
+  </script>
+</body>
+</html>

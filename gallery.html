@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Prajwala Community Development Society</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="container">
+      <div class="contact-info">
+        <span><i class="fas fa-phone"></i> +91 9502046096</span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:pcdsguntur19@gmail.com" style="color:inherit;text-decoration:none;">pcdsguntur19@gmail.com</a></span>
+      </div>
+      <div class="social">
+        <a href="https://www.facebook.com/pcdsguntur/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/pcds2026/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <header class="sub-page-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Prajwala Community Development Society" class="logo-img">
+        <div class="logo-text">Prajwala Community <span>Development Society</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="gallery.html" class="gallery-btn active">Gallery</a></li>
+          <li><a href="oldage-home.html">Old Age Home</a></li>
+          <li><a href="index.html#join">Join Us</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><button class="lang-nav-btn" onclick="toggleLangNav()" id="langNavBtn">తెలుగు</button></li>
+          <li><a href="donate.html" class="donate-btn">Donate Now</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="gallery-page">
+    <div class="container">
+      <div class="gallery-header" id="galleryHeader">
+        <h1>Our <span>Gallery</span></h1>
+        <p>Explore moments captured across our various events and programs. Click on an event folder to view photos and videos.</p>
+      </div>
+
+      <div style="text-align:right;margin-bottom:10px;">
+        <button class="btn btn-primary admin-only" onclick="addNewFolder()" style="font-size:13px;padding:6px 16px;"><i class="fas fa-folder-plus"></i> New Folder</button>
+      </div>
+      <div class="gallery-folders" id="galleryFolders"></div>
+
+      <div id="folderViewContainer"></div>
+
+      <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+        <button class="close" onclick="document.getElementById('lightbox').classList.remove('open')">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+      </div>
+
+      <!-- Admin Login Modal -->
+      <div class="admin-modal" id="adminModal">
+        <div class="admin-modal-content">
+          <span class="admin-modal-close" onclick="closeAdminLogin()">&times;</span>
+          <h3><i class="fas fa-shield-alt"></i> Admin Login</h3>
+          <p>Enter admin password to manage gallery</p>
+          <input type="password" id="adminPassword" placeholder="Enter admin password"
+            onkeydown="if(event.key==='Enter') adminLogin()">
+          <button class="btn btn-primary" onclick="adminLogin()" style="margin-top:10px;width:100%;">Login</button>
+          <p id="adminError" style="color:#dc2626;font-size:13px;margin-top:8px;display:none;">Incorrect password</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Controls -->
+  <div style="text-align:center;padding:20px;background:var(--cream-dark);" id="adminControls">
+    <button class="btn btn-outline-oah" id="adminLoginBtn" onclick="showAdminLogin()"><i class="fas fa-lock"></i> Admin Portal</button>
+    <button class="btn btn-primary" id="adminLogoutBtn" onclick="adminLogout()" style="display:none;"><i class="fas fa-unlock"></i> Logout Admin</button>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo-text" style="color: #fff; margin-bottom: 15px;">Prajwala Community <span>Development Society</span></div>
+          <p>We serve people, we build nature &amp; culture — through education, healthcare, and sustainable development.</p>
+          <div class="social">
+            <a href="https://www.facebook.com/pcdsguntur/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/pcds2026/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="teams.html">Our Teams</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="oldage-home.html">Old Age Home</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Our Programs</h3>
+          <ul>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Women Empowerment</a></li>
+            <li><a href="#">Skill Development</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Prajwala Community Development Society. All rights reserved.</span>
+        <div><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    const galleryFolders = {
+      swacchBharat: {
+        title: 'Swacch Bharat',
+        desc: 'Community Cleanliness Drives | Multiple Locations',
+        images: ['images/sw1.jpeg','images/sw2.jpeg','images/sw3.jpeg','images/sw4.jpeg']
+      },
+      covid: {
+        title: 'COVID',
+        desc: 'COVID-19 Relief & Support | Multiple Locations',
+        images: ['images/Covid.jpeg','images/covid cert.jpeg','images/covid3.jpeg','images/health.jpeg']
+      },
+      education: {
+        title: 'Education',
+        desc: 'Teaching & Mentoring Programs | Multiple Locations',
+        images: ['images/education1.jpeg','images/education2.jpeg','images/education3.jpeg']
+      },
+      donations: {
+        title: 'Donations',
+        desc: 'Donation Drives & Distributions | Multiple Locations',
+        images: ['images/donation main page.jpeg','images/blood donation.jpeg','images/boold donation2.jpeg','images/hair donation.jpeg']
+      },
+      achievements: {
+        title: 'Achievements',
+        desc: 'Awards & Recognition | Multiple Locations',
+        images: ['images/achevement1.jpeg','images/ac2.jpeg','images/ac3.jpeg','images/ac4.jpeg']
+      }
+    };
+
+    async function loadFolderData() {
+      try {
+        if (typeof apiGetGallery === 'function') {
+          const apiData = await apiGetGallery();
+          if (apiData && Object.keys(apiData).length > 0) {
+            Object.keys(apiData).forEach(k => {
+              galleryFolders[k] = { ...galleryFolders[k], ...apiData[k] };
+            });
+            return;
+          }
+        }
+      } catch (e) {}
+      // Fallback: try localStorage
+      const saved = localStorage.getItem('prajwala_gallery_folders');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          Object.keys(parsed).forEach(k => {
+            if (galleryFolders[k]) {
+              galleryFolders[k].images = parsed[k].images || galleryFolders[k].images;
+              galleryFolders[k].title = parsed[k].title || galleryFolders[k].title;
+            } else {
+              galleryFolders[k] = parsed[k];
+            }
+          });
+        } catch(e) {}
+      }
+    }
+
+    async function saveFolderData() {
+      const data = {};
+      Object.keys(galleryFolders).forEach(k => {
+        data[k] = { title: galleryFolders[k].title, desc: galleryFolders[k].desc, images: galleryFolders[k].images };
+      });
+      try {
+        if (typeof apiGetGallery === 'function') {
+          for (const [key, val] of Object.entries(data)) {
+            if (typeof apiUpdateGalleryFolder === 'function') {
+              await apiUpdateGalleryFolder(key, { title: val.title, desc: val.desc, images: val.images });
+            }
+          }
+          return;
+        }
+      } catch (e) {}
+      localStorage.setItem('prajwala_gallery_folders', JSON.stringify(data));
+    }
+
+    function renderGalleryFolders() {
+      const container = document.getElementById('galleryFolders');
+      if (!container) return;
+      container.innerHTML = '';
+      Object.keys(galleryFolders).forEach(key => {
+        const f = galleryFolders[key];
+        const thumb = f.images && f.images.length > 0 ? f.images[0] : 'images/placeholder.svg';
+        const card = document.createElement('div');
+        card.className = 'folder-card';
+        card.style.cursor = 'pointer';
+        card.setAttribute('onclick', "showFolder('" + key + "')");
+        card.innerHTML =
+          '<img src="' + thumb + '" alt="' + f.title + '" style="height:180px;object-fit:cover;" onerror="this.src=\'images/placeholder.svg\'">' +
+          '<div class="folder-info">' +
+          '<h3>' + f.title + '</h3>' +
+          '<p>' + (f.desc || '') + '</p>' +
+          '</div>';
+        container.appendChild(card);
+      });
+    }
+
+    (async function() {
+      await loadFolderData();
+      renderGalleryFolders();
+    })();
+
+    function showFolder(key) {
+      const folder = galleryFolders[key];
+      if (!folder) return;
+      document.getElementById('galleryFolders').style.display = 'none';
+      document.getElementById('galleryHeader').style.display = 'none';
+      const container = document.getElementById('folderViewContainer');
+      container.style.display = 'block';
+      let html = `
+        <button class="back-link gallery-back-btn" onclick="backToGallery()">
+          <i class="fas fa-arrow-left"></i> Back to Gallery
+        </button>
+        <h1 style="font-size:34px;color:var(--secondary);margin-bottom:8px;">${folder.title} <span style="background:linear-gradient(135deg,#F59E0B,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Gallery</span></h1>
+        <p class="event-date"><i class="fas fa-calendar-alt"></i> ${folder.desc}</p>
+        <div class="media-grid" id="folderMediaGrid">
+      `;
+      folder.images.forEach((src, i) => {
+        html += `<div class="media-item" style="position:relative;">
+          <img src="${src}" alt="${folder.title} ${i+1}" onclick="openLightbox(this.src)">
+          <div class="admin-only admin-img-actions" style="display:none;position:absolute;top:5px;right:5px;z-index:5;gap:4px;" id="imgActions_${key}_${i}">
+            <button class="btn-small" onclick="editImage('${key}', ${i})" style="padding:3px 8px;font-size:10px;"><i class="fas fa-pencil-alt"></i></button>
+            <button class="btn-small" onclick="deleteImage('${key}', ${i})" style="padding:3px 8px;font-size:10px;background:#dc2626;"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>`;
+      });
+      if (document.body.classList.contains('admin-logged-in')) {
+        html += `<div style="text-align:center;margin-top:20px;">
+          <button class="btn btn-primary" onclick="addImage('${key}')"><i class="fas fa-plus"></i> Add Image</button>
+          <button class="btn btn-outline-oah" onclick="editFolderMeta('${key}')" style="margin-left:10px;"><i class="fas fa-pencil-alt"></i> Edit Folder</button>
+          <button class="btn btn-outline-oah" onclick="deleteFolder('${key}')" style="margin-left:10px;border-color:#dc2626;color:#dc2626;"><i class="fas fa-trash"></i> Delete Folder</button>
+        </div>`;
+      }
+      html += `</div>`;
+      container.innerHTML = html;
+      if (document.body.classList.contains('admin-logged-in')) {
+        document.querySelectorAll('.admin-img-actions').forEach(el => el.style.display = 'flex');
+      }
+    }
+
+    function backToGallery() {
+      document.getElementById('galleryFolders').style.display = 'grid';
+      document.getElementById('galleryHeader').style.display = 'block';
+      document.getElementById('folderViewContainer').style.display = 'none';
+    }
+
+    async function editImage(key, idx) {
+      const newSrc = prompt('Enter new image URL:', galleryFolders[key].images[idx]);
+      if (newSrc && newSrc.trim()) {
+        galleryFolders[key].images[idx] = newSrc.trim();
+        await saveFolderData();
+        showFolder(key);
+      }
+    }
+
+    async function deleteImage(key, idx) {
+      if (!confirm('Delete this image?')) return;
+      galleryFolders[key].images.splice(idx, 1);
+      await saveFolderData();
+      showFolder(key);
+    }
+
+    async function addImage(key) {
+      const newSrc = prompt('Enter image URL:');
+      if (newSrc && newSrc.trim()) {
+        galleryFolders[key].images.push(newSrc.trim());
+        await saveFolderData();
+        showFolder(key);
+      }
+    }
+
+    async function addNewFolder() {
+      const key = prompt('Enter folder key (no spaces, e.g. "newFolder"):');
+      if (!key || !key.trim()) return;
+      if (galleryFolders[key]) { alert('Folder key already exists!'); return; }
+      const title = prompt('Enter folder display name:');
+      if (!title || !title.trim()) return;
+      galleryFolders[key] = { title: title.trim(), desc: '', images: [] };
+      try {
+        if (typeof apiAddGalleryFolder === 'function') {
+          await apiAddGalleryFolder(key, title.trim(), '', []);
+        }
+      } catch (e) {
+        await saveFolderData();
+      }
+      location.reload();
+    }
+
+    async function editFolderMeta(key) {
+      const folder = galleryFolders[key];
+      const newTitle = prompt('Enter folder name:', folder.title);
+      if (newTitle && newTitle.trim()) {
+        folder.title = newTitle.trim();
+      }
+      const newDesc = prompt('Enter folder description:', folder.desc || '');
+      if (newDesc !== null) {
+        folder.desc = newDesc.trim();
+      }
+      await saveFolderData();
+      showFolder(key);
+    }
+
+    async function deleteFolder(key) {
+      if (!confirm('Delete this folder and all its images?')) return;
+      delete galleryFolders[key];
+      try {
+        if (typeof apiDeleteGalleryFolder === 'function') {
+          await apiDeleteGalleryFolder(key);
+        }
+      } catch (e) {
+        await saveFolderData();
+      }
+      location.reload();
+    }
+
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+
+    // Show admin image actions when admin logs in
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.body.classList.contains('admin-logged-in')) {
+        document.querySelectorAll('.admin-img-actions').forEach(el => el.style.display = 'flex');
+      }
+    });
+  </script>
+</body>
+
+</html>

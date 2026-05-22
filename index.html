@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prajwala Community Development Society - We Serve People, We Build Nature &amp; Culture</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- HERO / SLIDESHOW (FIRST - full viewport) -->
+  <section class="hero" id="home">
+    <div class="slideshow">
+      <div class="slide active">
+        <img src="images/overview.jpeg" alt="NGO Work">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h1>We Serve <span>People</span>,<br>We Build <span>Nature &amp; Culture</span></h1>
+          <p>Working together to create sustainable change through education, healthcare, and community development.</p>
+          <a href="donate.html" class="btn">Donate Now</a>
+          <a href="#join" class="btn btn-outline">Become a Volunteer</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="images/empowering.jpeg" alt="Education">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h1>Education for <span>Every Child</span></h1>
+          <p>Breaking the cycle of poverty through quality education and mentorship programs.</p>
+          <a href="donate.html" class="btn">Donate Now</a>
+          <a href="#join" class="btn btn-outline">Become a Volunteer</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="images/health.jpeg" alt="Healthcare">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h1>Healthcare for <span>All</span></h1>
+          <p>Providing accessible medical services to underserved communities across India.</p>
+          <a href="donate.html" class="btn">Donate Now</a>
+          <a href="#join" class="btn btn-outline">Become a Volunteer</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="images/blood donation.jpeg" alt="Community">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h1>Together We <span>Can</span></h1>
+          <p>Join our mission to create a sustainable and equitable future for all communities.</p>
+          <a href="donate.html" class="btn">Donate Now</a>
+          <a href="#join" class="btn btn-outline">Become a Volunteer</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slideshow-arrows">
+      <button class="prev-slide" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+      <button class="next-slide" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="slideshow-controls">
+      <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+      <button class="dot" data-index="1" aria-label="Slide 2"></button>
+      <button class="dot" data-index="2" aria-label="Slide 3"></button>
+      <button class="dot" data-index="3" aria-label="Slide 4"></button>
+    </div>
+  </section>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="contact-info">
+        <span><i class="fas fa-phone"></i> +91 9502046096</span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:pcdsguntur19@gmail.com" style="color:inherit;text-decoration:none;">pcdsguntur19@gmail.com</a></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="social">
+          <a href="https://www.facebook.com/pcdsguntur/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/pcds2026/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER (absolute over hero) -->
+  <header>
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="logo.png" alt="Prajwala Community Development Society" class="logo-img">
+        <div class="logo-text">Prajwala Community <span>Development Society</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="gallery.html" class="gallery-btn">Gallery</a></li>
+          <li><a href="oldage-home.html">Old Age Home</a></li>
+          <li><a href="#join">Join Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button class="lang-nav-btn" onclick="toggleLangNav()" id="langNavBtn">తెలుగు</button></li>
+          <li><a href="donate.html" class="donate-btn">Donate Now</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About <span>Us</span></h2>
+        <p>Dedicated to creating positive change in communities across India through education, healthcare, and
+          sustainable development.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-image animate-fade-in">
+          <img src="images/aunty.JPG" alt="Perumalla Gowri Sirisha">
+        </div>
+        <div class="about-content animate-fade-in-d1">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+            <span
+              style="background:linear-gradient(135deg,#F59E0B,#EC4899);color:#fff;padding:4px 16px;border-radius:50px;font-size:12px;font-weight:700;">Wonder
+              Woman</span>
+            <span
+              style="background:var(--cream-dark);color:var(--text);padding:4px 16px;border-radius:50px;font-size:12px;font-weight:600;">Brand
+              Ambassador of Volunteering</span>
+          </div>
+          <h3>Perumalla Gowri Sirisha</h3>
+          <p style="font-style:italic;color:var(--text-light);border-left:3px solid var(--primary);padding-left:16px;margin-bottom:16px;">"Problems pale in comparison to the resolve to help others."</p>
+          <p>A volunteer is someone who steps forward voluntarily—driven by a selfless spirit of service and an impartial attitude—to extend a helping hand. Through her extraordinary service, a woman leading an ordinary life has demonstrated that, when faced with the determination to support those in distress, one's own poverty is merely a minor obstacle.</p>
+          <p>Moved by the suffering of others, weary of age-old social inequalities, and deeply affected by the sight of lives ravaged by financial ruin, <strong>Sirisha resolved to stand as a pillar of support</strong>. As the daughter of Perumalla Suryanarayana—a prominent RTI activist—she inherited a deep sensitivity to human suffering and profound empathy for victims of injustice.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="vision">Our Vision</button>
+          <button class="tab-btn" data-tab="mission">Our Mission</button>
+          <button class="tab-btn" data-tab="values">Our Values</button>
+          <button class="tab-btn" data-tab="journey">Our Journey</button>
+        </div>
+        <div class="tab-panel active" id="vision">
+          <div class="tab-content">
+            <div>
+              <h3>Our Vision</h3>
+              <p>A world where every individual has access to justice, healthcare, education, and dignified livelihood —
+                regardless of gender, caste, or economic background.</p>
+              <ul>
+                <li><strong>Women Empowerment:</strong> Free tailoring centers, self-defense training, and legal aid for
+                  women.</li>
+                <li><strong>Health for All:</strong> Blood donation camps, COVID relief, and accessible medical support.
+                </li>
+                <li><strong>Environmental Sustainability:</strong> Tree planting drives and awareness campaigns.</li>
+              </ul>
+            </div>
+            <img src="logo.png" alt="Our Vision">
+          </div>
+        </div>
+        <div class="tab-panel" id="mission">
+          <div class="tab-content">
+            <div>
+              <h3>Our Mission</h3>
+              <p>"To serve as a pillar of support for the distressed, the illiterate, and the elderly — ensuring their
+                rights, dignity, and well-being."</p>
+              <ul>
+                <li><strong>Legal Aid:</strong> Para-Legal services through District Legal Services Authority to ensure
+                  justice for all.</li>
+                <li><strong>Food Security:</strong> Distributed essentials to 50,000+ families during COVID-19 lockdown.
+                </li>
+                <li><strong>Youth Development:</strong> Personality development programs and awards for young
+                  volunteers.</li>
+              </ul>
+            </div>
+            <img src="images/mission.jpeg" alt="Our Mission">
+          </div>
+        </div>
+        <div class="tab-panel" id="values">
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+              <h3>Selfless Service</h3>
+              <p>Driven by a spirit of voluntary service, putting others' needs before our own — regardless of personal
+                circumstances.</p>
+            </div>
+            <div class="value-card">
+              <div class="icon"><i class="fas fa-gavel"></i></div>
+              <h3>Social Justice</h3>
+              <p>Standing against age-old inequalities and ensuring every individual has access to their rightful
+                entitlements and legal aid.</p>
+            </div>
+            <div class="value-card">
+              <div class="icon"><i class="fas fa-fist-raised"></i></div>
+              <h3>Women's Safety</h3>
+              <p>Empowering women through self-defense training, legal protection, and economic independence via skill
+                development.</p>
+            </div>
+            <div class="value-card">
+              <div class="icon"><i class="fas fa-leaf"></i></div>
+              <h3>Environmental Care</h3>
+              <p>Planting thousands of saplings and fighting pollution — because caring for nature is caring for the
+                future.</p>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="journey">
+          <div style="max-width:800px;margin:0 auto;">
+            <h3 style="text-align:center;font-size:26px;margin-bottom:25px;">Our Growth <span
+                style="background:linear-gradient(135deg,#F59E0B,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Journey</span>
+            </h3>
+            <p style="text-align:center;color:var(--text-light);margin-bottom:30px;">From a small team of 3 to touching
+              50,000+ lives — see how we've grown over the years.</p>
+            <div
+              style="background:var(--cream);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow);border:1px solid var(--cream-dark);">
+              <svg viewBox="0 0 700 320" style="width:100%;height:auto;" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                    <feMerge>
+                      <feMergeNode in="coloredBlur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <!-- Center timeline base -->
+                <line x1="80" y1="200" x2="660" y2="200" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6,4" />
+
+                <!-- Zigzag program line (up = new program launched) -->
+                <polyline fill="none" stroke="#F59E0B" stroke-width="3" stroke-linejoin="miter" stroke-linecap="square"
+                  points="120,200 180,160 240,120 300,160 360,100 420,60 480,100 540,40 600,80 660,20" />
+
+                <!-- Shadow glow under line -->
+                <polyline fill="none" stroke="rgba(245,158,11,0.15)" stroke-width="8" stroke-linejoin="miter"
+                  stroke-linecap="square"
+                  points="120,200 180,160 240,120 300,160 360,100 420,60 480,100 540,40 600,80 660,20" />
+
+                <!-- Year markers on timeline -->
+                <text x="120" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2016</text>
+                <text x="180" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2017</text>
+                <text x="240" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2018</text>
+                <text x="300" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2020</text>
+                <text x="360" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2021</text>
+                <text x="420" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2022</text>
+                <text x="480" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2023</text>
+                <text x="540" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2024</text>
+                <text x="600" y="220" text-anchor="middle" fill="#94A3B8" font-size="9">2025</text>
+                <text x="660" y="220" text-anchor="middle" fill="#EC4899" font-size="9" font-weight="bold">2026</text>
+
+                <!-- Node: Founded -->
+                <circle cx="120" cy="200" r="10" fill="#F59E0B" stroke="#fff" stroke-width="2.5" filter="url(#glow)" />
+                <rect x="98" y="226" width="44" height="18" rx="9" fill="rgba(245,158,11,0.12)" />
+                <text x="120" y="239" text-anchor="middle" fill="#D97706" font-size="8"
+                  font-weight="bold">FOUNDED</text>
+
+                <!-- Node: Education Camp -->
+                <circle cx="180" cy="160" r="8" fill="#F59E0B" stroke="#fff" stroke-width="2" />
+                <rect x="148" y="132" width="64" height="18" rx="9" fill="rgba(245,158,11,0.12)" />
+                <text x="180" y="145" text-anchor="middle" fill="#D97706" font-size="7.5" font-weight="600">Education
+                  Camp</text>
+
+                <!-- Node: 5 States -->
+                <circle cx="240" cy="120" r="8" fill="#10B981" stroke="#fff" stroke-width="2" />
+                <rect x="212" y="92" width="56" height="18" rx="9" fill="rgba(16,185,129,0.12)" />
+                <text x="240" y="105" text-anchor="middle" fill="#065F46" font-size="7.5" font-weight="600">5
+                  States</text>
+
+                <!-- Node: COVID Relief -->
+                <circle cx="300" cy="160" r="9" fill="#EF4444" stroke="#fff" stroke-width="2.5" />
+                <rect x="268" y="166" width="64" height="18" rx="9" fill="rgba(239,68,68,0.12)" />
+                <text x="300" y="179" text-anchor="middle" fill="#991B1B" font-size="7.5" font-weight="600">COVID
+                  Relief</text>
+
+                <!-- Node: Health Camps -->
+                <circle cx="360" cy="100" r="8" fill="#F59E0B" stroke="#fff" stroke-width="2" />
+                <rect x="328" y="72" width="64" height="18" rx="9" fill="rgba(245,158,11,0.12)" />
+                <text x="360" y="85" text-anchor="middle" fill="#D97706" font-size="7.5" font-weight="600">Health
+                  Camps</text>
+
+                <!-- Node: Healthcare Wing -->
+                <circle cx="420" cy="60" r="9" fill="#10B981" stroke="#fff" stroke-width="2.5" />
+                <rect x="384" y="34" width="72" height="18" rx="9" fill="rgba(16,185,129,0.12)" />
+                <text x="420" y="47" text-anchor="middle" fill="#065F46" font-size="7.5" font-weight="600">Healthcare
+                  Wing</text>
+
+                <!-- Node: Women Empower -->
+                <circle cx="480" cy="100" r="8" fill="#EC4899" stroke="#fff" stroke-width="2" />
+                <rect x="444" y="106" width="72" height="18" rx="9" fill="rgba(236,72,153,0.12)" />
+                <text x="480" y="119" text-anchor="middle" fill="#9D174D" font-size="7.5" font-weight="600">Women
+                  Empower</text>
+
+                <!-- Node: Tech Saala -->
+                <circle cx="540" cy="40" r="9" fill="#F59E0B" stroke="#fff" stroke-width="2.5" />
+                <rect x="510" y="14" width="60" height="18" rx="9" fill="rgba(245,158,11,0.12)" />
+                <text x="540" y="27" text-anchor="middle" fill="#D97706" font-size="7.5" font-weight="600">Tech
+                  Saala</text>
+
+                <!-- Node: Old Age Home -->
+                <circle cx="600" cy="80" r="8" fill="#EC4899" stroke="#fff" stroke-width="2" />
+                <rect x="566" y="86" width="68" height="18" rx="9" fill="rgba(236,72,153,0.12)" />
+                <text x="600" y="99" text-anchor="middle" fill="#9D174D" font-size="7.5" font-weight="600">Old Age
+                  Home</text>
+
+                <!-- Node: Goal -->
+                <circle cx="660" cy="20" r="11" fill="#EC4899" stroke="#fff" stroke-width="3" filter="url(#glow)" />
+                <rect x="630" y="228" width="60" height="18" rx="9" fill="rgba(236,72,153,0.12)" />
+                <text x="660" y="241" text-anchor="middle" fill="#DB2777" font-size="8" font-weight="bold">ONWARD</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSOCIATED WITH -->
+  <section class="associated" id="associated">
+    <div class="container">
+      <div class="section-title">
+        <h2>Associated <span>With</span></h2>
+        <p>We are proud to be associated with these esteemed organizations and professionals.</p>
+      </div>
+      <div class="assoc-scroll" id="assocScroll">
+        <div class="assoc-card">
+          <img src="images/Dr.Ch.Sowmya_Dr.Ch.Naveen.jpeg" alt="Dr. Ch. Sowmya & Dr. Ch. Naveen" class="assoc-img">
+          <h4>Sowmya Multi Speciality Dental Clinic</h4>
+          <p>Dr. Ch. Sowmya, B.D.S.; F.A.G.E. Cosmetic Dental Surgeon</p>
+          <p style="margin-top:4px;">Dr. Ch. Naveen, M.D.S. Prosthodontics &amp; Implantologist</p>
+          <span class="assoc-loc">Kothapet, Guntur</span>
+        </div>
+        <div class="assoc-card">
+          <img src="images/DR.Sahan Kumar.jpeg" alt="Dr. Sahan Kumar" class="assoc-img">
+          <h4>Dr. Sahan Kumar Garu</h4>
+          <p style="margin-top:6px;"><strong>REAKHA CLINIC</strong>, Inner Ri Road, Guntur</p>
+          <p style="margin-top:2px;"><strong>RAFA LABS</strong>, R.Agraharam</p>
+        </div>
+        <div class="assoc-card">
+          <img src="images/B.Sharmilla.jpeg" alt="B. Sharmila" class="assoc-img">
+          <h4>B. Sharmila</h4>
+          <p>Assistant Professor &amp; Psychologist</p>
+        </div>
+        <div class="assoc-card">
+          <img src="images/B.Keerthi.png" alt="B. Keerthi" class="assoc-img">
+          <h4>B. Keertthi</h4>
+          <p>M.P.H.W.(F)</p>
+          <p>GNM Nurse</p>
+        </div>
+        <div class="assoc-card">
+          <img src="images/Dr.KrishnaBharath.jpeg" alt="Dr. Krishna Bharath" class="assoc-img">
+          <h4>B. Krishnabharath</h4>
+          <p>Psychologist</p>
+          <p style="margin-top:4px;">Founder President</p>
+          <p>Advanced Psychological services Association (APA India)</p>
+          <span class="assoc-loc">Hyderabad</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- JOIN US -->
+  <section id="join">
+    <div class="container">
+      <div class="section-title">
+        <h2>Join <span>Us</span></h2>
+        <p>Be part of our mission. Volunteer, donate, or partner with us to create lasting change.</p>
+      </div>
+      <div class="join-grid">
+        <div class="join-info">
+          <h3>Why Volunteer With Us?</h3>
+          <div class="benefit">
+            <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <div>
+              <h4>Make Real Impact</h4>
+              <p>See the direct results of your efforts in transformed communities.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="icon"><i class="fas fa-users"></i></div>
+            <div>
+              <h4>Build Networks</h4>
+              <p>Connect with like-minded individuals and build lasting friendships.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="icon"><i class="fas fa-chart-line"></i></div>
+            <div>
+              <h4>Develop Skills</h4>
+              <p>Gain valuable experience and develop new professional skills.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="icon"><i class="fas fa-award"></i></div>
+            <div>
+              <h4>Recognition</h4>
+              <p>Receive certificates and recognition for your valuable contributions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="join-form">
+          <h3>Join as a Volunteer</h3>
+          <form class="volunteer-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" class="vf-name" required>
+              </div>
+              <div class="form-group">
+                <label>Email *</label>
+                <input type="email" class="vf-email" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" class="vf-phone">
+              </div>
+              <div class="form-group">
+                <label>Area of Interest</label>
+                <select class="vf-interest">
+                  <option>Education</option>
+                  <option>Healthcare</option>
+                  <option>Community Development</option>
+                  <option>Fundraising</option>
+                  <option>Digital Media</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Why do you want to join? *</label>
+              <textarea rows="4" class="vf-message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Application</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get In <span>Touch</span></h2>
+        <p>Ready to make a difference? Contact us to learn more about our programs or partnership opportunities.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-detail">
+            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Office Address</h4>
+              <p>Prajwala Community Development Society<br>Guntur, Andhra Pradesh<br>India</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <h4>Phone & Email</h4>
+              <p>+91 9502046096<br>pcdsguntur19@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <h4>Office Hours</h4>
+              <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="icon"><i class="fab fa-facebook-f"></i></div>
+            <div>
+              <h4>Follow Us</h4>
+              <p>
+                <a href="https://www.facebook.com/pcdsguntur/" target="_blank" style="color:var(--primary);text-decoration:none;">Facebook</a> |
+                <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank" style="color:var(--primary);text-decoration:none;">YouTube</a> |
+                <a href="https://www.instagram.com/pcds2026/" target="_blank" style="color:var(--primary);text-decoration:none;">Instagram</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:15px;">Our Location</h3>
+          <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);">
+            <iframe src="https://maps.google.com/maps?q=16.278506,80.4545761&z=17&hl=en&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo-text" style="color: #fff; margin-bottom: 15px;">Prajwala Community <span>Development
+              Society</span></div>
+          <p>We serve people, we build nature &amp; culture — through education, healthcare, and sustainable
+            development. Creating lasting change in rural India since 2016.</p>
+          <div class="social">
+            <a href="https://www.facebook.com/pcdsguntur/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/pcds2026/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="teams.html">Our Teams</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="oldage-home.html">Old Age Home</a></li>
+            <li><a href="#join">Volunteer</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Our Programs</h3>
+          <ul>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Women Empowerment</a></li>
+            <li><a href="#">Skill Development</a></li>
+            <li><a href="#">Community Development</a></li>
+            <li><a href="oldage-home.html">Old Age Home</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Prajwala Community Development Society. All rights reserved.</span>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+
+
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

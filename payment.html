@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - Prajwala Community Development Society</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .payment-page { padding: 120px 0 80px; min-height: 60vh; }
+    .payment-card {
+      max-width: 520px; margin: 0 auto;
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 40px; text-align: center;
+    }
+    .payment-card .icon { font-size: 48px; color: var(--primary); margin-bottom: 10px; }
+    .payment-card h2 { font-size: 28px; margin-bottom: 5px; }
+    .payment-card h2 span { color: var(--primary); }
+    .payment-card .sub { color: var(--text-light); margin-bottom: 25px; font-size: 15px; }
+    .payment-card .amount-display {
+      font-size: 42px; font-weight: 900;
+      background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin: 10px 0;
+    }
+    .payment-card .upi-id {
+      background: #f8f8f8; padding: 10px 20px; border-radius: 8px;
+      font-size: 15px; color: var(--text-light); margin: 15px 0;
+      display: inline-block; font-family: monospace;
+    }
+    .payment-card .qr-wrap {
+      margin: 20px auto; width: 220px; height: 220px;
+      border: 3px dashed #e0e0e0; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .payment-card .qr-wrap img { width: 100%; height: 100%; object-fit: contain; }
+    .payment-card .btn-row { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+    .payment-card .btn-row .btn { padding: 12px 30px; font-weight: 700; border-radius: 50px; font-size: 15px; cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-pay { background: var(--gradient-1); color: #fff; border: none; }
+    .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245,158,11,0.35); }
+    .payment-card         .note { font-size: 13px; color: var(--text-light); margin-top: 20px; padding: 15px; background: #fff8f0; border-radius: var(--radius); }
+        .toast-copy {
+          position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px);
+          background: #0F172A; color: #fff; padding: 12px 28px; border-radius: 50px;
+          font-size: 14px; font-weight: 600; box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+          opacity: 0; transition: all 0.4s ease; pointer-events: none; z-index: 9999;
+          display: flex; align-items: center; gap: 8px;
+        }
+        .toast-copy.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    @media (max-width: 600px) { .payment-card { padding: 25px; margin: 0 15px; } }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="container">
+      <div class="contact-info">
+        <span><i class="fas fa-phone"></i> +91 9502046096</span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:pcdsguntur19@gmail.com" style="color:inherit;text-decoration:none;">pcdsguntur19@gmail.com</a></span>
+      </div>
+      <div class="social">
+        <a href="https://www.facebook.com/pcdsguntur/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/pcds2026/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <header class="sub-page-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Prajwala Community Development Society" class="logo-img">
+        <div class="logo-text">Prajwala Community <span>Development Society</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="gallery.html" class="gallery-btn">Gallery</a></li>
+          <li><a href="oldage-home.html">Old Age Home</a></li>
+          <li><a href="index.html#join">Join Us</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><button class="lang-nav-btn" onclick="toggleLangNav()" id="langNavBtn">తెలుగు</button></li>
+          <li><a href="donate.html" class="donate-btn">Donate Now</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="payment-page">
+    <div class="container">
+      <div class="payment-card">
+        <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+        <h2>Thank You, <span id="payName">Guest</span>!</h2>
+        <p class="sub">Your kindness brings hope. Complete your donation of</p>
+        <div class="amount-display" id="payAmount">₹0</div>
+
+        <p style="font-weight:600;margin:15px 0 5px;color:var(--secondary);">Scan & Pay via UPI</p>
+
+        <div class="qr-wrap">
+          <img src="images/upi-qr.png" alt="UPI QR Code">
+        </div>
+
+        <div class="upi-id">
+          <i class="fas fa-credit-card" style="margin-right:6px;color:var(--primary);"></i>
+          UPI ID: <strong id="payUpiId" style="color:var(--secondary);">7706047528@myapgb</strong>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-pay" id="payNowBtn" onclick="openUpiApp()">
+            <i class="fas fa-external-link-alt"></i> Pay <span id="payBtnAmount">₹0</span>
+          </button>
+          <a href="donate.html" class="btn btn-outline-oah" style="padding:12px 30px;font-weight:700;border-radius:50px;font-size:15px;">
+            <i class="fas fa-arrow-left"></i> Edit Details
+          </a>
+        </div>
+
+        <div class="note">
+          <i class="fas fa-info-circle" style="color:var(--primary);margin-right:6px;"></i>
+          After payment, please share the transaction details with us at <strong>pcdsguntur19@gmail.com</strong> or <strong>+91 9502046096</strong> so we can acknowledge your contribution.
+        </div>
+      </div>
+    </div>
+    <div id="toastCopy" class="toast-copy"><i class="fas fa-check-circle" style="color:#22c55e;"></i> UPI ID Copied! Use any UPI app to pay.</div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo-text" style="color: #fff; margin-bottom: 15px;">Prajwala Community <span>Development Society</span></div>
+          <p>We serve people, we build nature & culture — through education, healthcare, and sustainable development.</p>
+          <div class="social">
+            <a href="https://www.facebook.com/pcdsguntur/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/pcds2026/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@prajwalacommunitydevelpome8031" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=919502046096" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="teams.html">Our Teams</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="oldage-home.html">Old Age Home</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Our Programs</h3>
+          <ul>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Women Empowerment</a></li>
+            <li><a href="#">Skill Development</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Prajwala Community Development Society. All rights reserved.</span>
+        <div><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name') || 'Guest';
+      const amount = params.get('amount') || '0';
+
+      document.getElementById('payName').textContent = name;
+      document.getElementById('payAmount').textContent = '\u20B9' + Number(amount).toLocaleString('en-IN');
+      document.getElementById('payBtnAmount').textContent = '\u20B9' + Number(amount).toLocaleString('en-IN');
+
+      if (currentLang === 'te' && translations.te) {
+        const te = translations.te;
+        const translateEl = document.querySelector('.payment-card .sub');
+        const noteEl = document.querySelector('.payment-card .note');
+        if (te['Your kindness brings hope. Complete your donation of']) {
+          translateEl.textContent = te['Your kindness brings hope. Complete your donation of'];
+        }
+        if (te['Scan & Pay via UPI']) {
+          document.querySelector('.payment-card p[style*="font-weight:600"]').textContent = te['Scan & Pay via UPI'];
+        }
+        if (te['Pay']) {
+          const payBtn = document.getElementById('payNowBtn');
+          payBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> ' + (te['Pay'] || 'Pay') + ' <span id="payBtnAmount">' + '\u20B9' + Number(amount).toLocaleString('en-IN') + '</span>';
+        }
+        if (te['Edit Details']) {
+          const editLink = document.querySelector('a[href="donate.html"].btn-outline-oah');
+          if (editLink) editLink.innerHTML = '<i class="fas fa-arrow-left"></i> ' + te['Edit Details'];
+        }
+        if (te['After payment, please share the transaction details with us at']) {
+          noteEl.innerHTML = '<i class="fas fa-info-circle" style="color:var(--primary);margin-right:6px;"></i> ' +
+            te['After payment, please share the transaction details with us at'] + ' <strong>pcdsguntur19@gmail.com</strong> ' +
+            (te['or'] || 'or') + ' <strong>+91 9502046096</strong> ' +
+            (te['so we can acknowledge your contribution.'] || 'so we can acknowledge your contribution.');
+        }
+      }
+    });
+
+    function openUpiApp() {
+      const params = new URLSearchParams(window.location.search);
+      const amount = params.get('amount') || '0';
+      const name = params.get('name') || '';
+      const upiId = '7706047528@myapgb';
+      const upiUrl = 'upi://pay?pa=' + upiId + '&pn=Prajwala%20CDS&am=' + amount + '&cu=INR&tn=Donation%20from%20' + encodeURIComponent(name);
+
+      copyToClipboard(upiId);
+
+      const isMobile = /android|iphone|ipad|ipod|webos/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = upiUrl;
+      } else {
+        showToast();
+      }
+    }
+
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed'; ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch(e) {}
+        document.body.removeChild(ta);
+      }
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toastCopy');
+      if (!toast) return;
+      toast.classList.add('show');
+      setTimeout(function() { toast.classList.remove('show'); }, 3500);
+    }
+  </script>
+</body>
+</html>
