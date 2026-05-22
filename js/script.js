@@ -57,7 +57,7 @@ const translations = {
     'All rights reserved.': 'సర్వ హక్కులు సంరక్షించబడినవి.',
     'Privacy Policy': 'గోప్యతా విధానం',
     'Terms of Service': 'సేవా నిబంధనలు',
-    'Associated With': 'మా భాగస్వాములు',
+    'Associated With': 'మా   భాగస్వాములు',
     'Lives Touched': 'ప్రభావితమైన జీవితాలు',
     'Funds Raised': 'సేకరించిన నిధులు',
     'Volunteers': 'స్వచ్ఛంద సేవకులు',
@@ -148,7 +148,256 @@ const translations = {
       '2016 నుండి గ్రామీణ భారతదేశంలో శాశ్వతమైన మార్పును సృష్టిస్తోంది.',
 
     'Credit / Debit Card': 'క్రెడిట్ / డెబిట్ కార్డ్',
-    'Custom': 'కస్టమ్'
+    'Custom': 'కస్టమ్',
+
+    'We serve people, we build nature & culture': 'మేము ప్రజలకు సేవ చేస్తాము, ప్రకృతిని మరియు సంస్కృతిని నిర్మిస్తాము',
+    'Prajwala Community': 'ప్రజ్వల కమ్యూనిటీ',
+    'Development Society': 'డెవలప్‌మెంట్ సొసైటీ',
+    'Delete Folder': 'ఫోల్డర్ తొలగించండి',
+    'Designs': 'డిజైన్లు',
+    'Digital Media': 'డిజిటల్ మీడియా',
+    'Distributions': 'పంపిణీలు',
+    'Donation Details': 'విరాళం వివరాలు',
+    'Donation Amount (₹) *': 'విరాళం మొత్తం (₹) *',
+    'Donors': 'దాతలు',
+    'Donors Data': 'దాతల డేటా',
+    'Download data as Excel (.xlsx) files for record keeping.': 'రికార్డు నిర్వహణ కోసం డేటాను Excel (.xlsx) ఫైల్‌లుగా డౌన్‌లోడ్ చేయండి.',
+    'Edit Details': 'వివరాలు సవరించండి',
+    'Edit Folder': 'ఫోల్డర్ సవరించండి',
+    'Edit the weekly menu for each day.': 'ప్రతి రోజుకు వీక్లీ మెనూను సవరించండి.',
+    'Education': 'విద్య',
+    'Email *': 'ఇమెయిల్ *',
+    'Enter admin password': 'అడ్మిన్ పాస్‌వర్డ్ నమోదు చేయండి',
+    'Enter admin password to manage Old Age Home': 'వృద్ధాశ్రమాన్ని నిర్వహించడానికి అడ్మిన్ పాస్‌వర్డ్ నమోదు చేయండి',
+    'Enter admin password to manage content': 'కంటెంట్ నిర్వహించడానికి అడ్మిన్ పాస్‌వర్డ్ నమోదు చేయండి',
+    'Enter admin password to manage gallery': 'గ్యాలరీని నిర్వహించడానికి అడ్మిన్ పాస్‌వర్డ్ నమోదు చేయండి',
+    'Enter amount': 'మొత్తం నమోదు చేయండి',
+    'Environmental Care': 'పర్యావరణ సంరక్షణ',
+    'Environmental Sustainability:': 'పర్యావరణ సుస్థిరత:',
+    'Export': 'ఎగుమతి',
+    'Export Data': 'డేటా ఎగుమతి',
+    'Export to Excel': 'Excelకు ఎగుమతి చేయండి',
+    'Facebook': 'ఫేస్‌బుక్',
+    'Feeds a child for a month': 'ఒక పిల్లవాడికి ఒక నెల ఆహారం',
+    'Follow Us': 'మమ్మల్ని అనుసరించండి',
+    'Food Security:': 'ఆహార భద్రత:',
+    'Free tailoring centers, self-defense training, and legal aid for women.': 'మహిళల కోసం ఉచిత టైలరింగ్ కేంద్రాలు, ఆత్మరక్షణ శిక్షణ మరియు చట్టపరమైన సహాయం.',
+    '\'ve grown over the years.': 'సంవత్సరాలుగా పెరిగాము.',
+    'Full Name *': 'పూర్తి పేరు *',
+    'Fundraising': 'నిధుల సేకరణ',
+    'Gain valuable experience and develop new professional skills.': 'విలువైన అనుభవాన్ని పొందండి మరియు కొత్త వృత్తిపరమైన నైపుణ్యాలను అభివృద్ధి చేసుకోండి.',
+    'Guntur, Andhra Pradesh': 'గుంటూరు, ఆంధ్రప్రదేశ్',
+    'Health Camps': 'ఆరోగ్య శిబిరాలు',
+    'Health for All:': 'అందరికీ ఆరోగ్యం:',
+    'Healthcare': 'ఆరోగ్య సంరక్షణ',
+    'Healthcare for a family': 'ఒక కుటుంబానికి ఆరోగ్య సంరక్షణ',
+    'Healthcare Wing': 'ఆరోగ్య సంరక్షణ విభాగం',
+    'India': 'భారతదేశం',
+    'Instagram': 'ఇన్‌స్టాగ్రామ్',
+    'Lead by:': 'నాయకత్వం:',
+    'Legal Aid:': 'చట్టపరమైన సహాయం:',
+    'Lives Impacted': 'ప్రభావితమైన జీవితాలు',
+    'Locations': 'ప్రదేశాలు',
+    'Make a Difference Today': 'ఈరోజే మార్పు తీసుకురండి',
+    'Mark All Absent': 'అందరినీ గైర్హాజరుగా గుర్తించండి',
+    'Mark All Present': 'అందరినీ హాజరుగా గుర్తించండి',
+    'Meals Daily': 'రోజువారీ భోజనం',
+    'Medical': 'వైద్యం',
+    'Members': 'సభ్యులు',
+    'Menu Editor': 'మెనూ ఎడిటర్',
+    'Message (optional)': 'సందేశం (ఐచ్ఛికం)',
+    'Mon - Fri: 9:00 AM - 6:00 PM': 'సోమ - శుక్ర: ఉదయం 9:00 - సాయంత్రం 6:00',
+    'Net Banking': 'నెట్ బ్యాంకింగ్',
+    'New Folder': 'కొత్త ఫోల్డర్',
+    'Notifications': 'నోటిఫికేషన్లు',
+    'Nutritious & balanced meals prepared with love for our elders': 'మా పెద్దల కోసం ప్రేమతో తయారు చేసిన పోషకమైన & సమతుల్య భోజనం',
+    'Our Dedicated Teams': 'మా అంకితభావంతో కూడిన బృందాలు',
+    'Our Growth Journey': 'మా వృద్ధి ప్రయాణం',
+    'Our Location': 'మా స్థానం',
+    'Our Residents': 'మా నివాసితులు',
+    'Para-Legal services through District Legal Services Authority to ensure justice for all.': 'అందరికీ న్యాయం నిర్ధారించడానికి జిల్లా లీగల్ సర్వీసెస్ అథారిటీ ద్వారా పారా-లీగల్ సేవలు.',
+    'Patients Served': 'సేవలందించిన రోగులు',
+    'Payment Method': 'చెల్లింపు పద్ధతి',
+    'Personality development programs and awards for young volunteers.': 'యువ స్వచ్ఛంద సేవకుల కోసం వ్యక్తిత్వ వికాస కార్యక్రమాలు మరియు అవార్డులు.',
+    'Phone': 'ఫోన్',
+    'Proceed to Donate': 'విరాళం కొనసాగించండి',
+    'Programs': 'కార్యక్రమాలు',
+    'Projects Completed': 'పూర్తి చేసిన ప్రాజెక్టులు',
+    'Providing love, care & dignity to our elderly residents since 2018': '2018 నుండి మా వృద్ధ నివాసితులకు ప్రేమ, సంరక్షణ & గౌరవం అందించడం',
+    'Ready to make a difference? Contact us to learn more about our programs or partnership opportunities.': 'మార్పు తీసుకురావడానికి సిద్ధంగా ఉన్నారా? మా కార్యక్రమాలు లేదా భాగస్వామ్య అవకాశాల గురించి తెలుసుకోవడానికి మమ్మల్ని సంప్రదించండి.',
+    'Recent Donors': 'ఇటీవలి దాతలు',
+    'Receive certificates and recognition for your valuable contributions.': 'మీ విలువైన సహకారాలకు సర్టిఫికెట్లు మరియు గుర్తింపు పొందండి.',
+    'Relief and support': 'ఉపశమనం మరియు మద్దతు',
+    'Resident': 'నివాసి',
+    'Residents Data': 'నివాసితుల డేటా',
+    'Sat: 10:00 AM - 4:00 PM': 'శని: ఉదయం 10:00 - సాయంత్రం 4:00',
+    'Save Menu': 'మెనూ సేవ్ చేయండి',
+    'Scan with any UPI app to pay': 'చెల్లించడానికి ఏదైనా UPI యాప్‌తో స్కాన్ చేయండి',
+    'School supplies for a child': 'ఒక పిల్లవాడికి పాఠశాల సామగ్రి',
+    'Schools': 'పాఠశాలలు',
+    'See the direct results of your efforts in transformed communities.': 'పరివర్తన చెందిన సమాజాలలో మీ ప్రయత్నాల ప్రత్యక్ష ఫలితాలను చూడండి.',
+    'Select Date:': 'తేదీ ఎంచుకోండి:',
+    'Selfless Service': 'నిస్వార్థ సేవ',
+    'Skill Development': 'నైపుణ్యాభివృద్ధి',
+    'Social Justice': 'సామాజిక న్యాయం',
+    'Students Supported': 'మద్దతు పొందిన విద్యార్థులు',
+    'Students Trained': 'శిక్షణ పొందిన విద్యార్థులు',
+    'Teaching and mentoring': 'బోధన మరియు మార్గదర్శకత్వం',
+    'Weekly Menu': 'వీక్లీ   మెనూ',
+    'Female': 'స్త్రీ',
+    'Male': 'పురుషుడు',
+    'Stable': 'స్థిరం',
+    'Dedicated to creating positive change in communities across India through education, healthcare, and sustainable development.': 'విద్య, ఆరోగ్య సంరక్షణ మరియు సుస్థిర అభివృద్ధి ద్వారా భారతదేశంలోని సమాజాలలో సానుకూల మార్పును సృష్టించడానికి అంకితం చేయబడింది.',
+    'Wonder Woman': 'వండర్ ఉమెన్',
+    'Problems pale in comparison to the resolve to help others.': 'ఇతరులకు సహాయం చేయాలనే సంకల్పం ముందు సమస్యలు తగ్గిపోతాయి.',
+    '\'s own poverty is merely a minor obstacle.': 'స్వంత పేదరికం కేవలం ఒక చిన్న అడ్డంకి మాత్రమే.',
+    'Moved by the suffering of others, weary of age-old social inequalities, and deeply affected by the sight of lives ravaged by financial ruin, Sirisha resolved to stand as a pillar of support. As the daughter of Perumalla Suryanarayana—a prominent RTI activist—she inherited a deep sensitivity to human suffering and profound empathy for victims of injustice.': 'ఇతరుల బాధలను చూసి కదిలిపోయి, పాతకాలపు సామాజిక అసమానతలతో విసిగిపోయి, ఆర్థిక నష్టంతో నాశనమైన జీవితాలను చూసి తీవ్రంగా ప్రభావితమై, సిరిషా ఒక ఆధార్ స్తంభంగా నిలవాలని నిశ్చయించుకుంది. ప్రముఖ ఆర్టీఐ కార్యకర్త అయిన పెరుమల్ల సూర్యనారాయణ కుమార్తెగా, ఆమె మానవ బాధల పట్ల లోతైన సున్నితత్వాన్ని మరియు అన్యాయానికి గురైన వారి పట్ల తీవ్రమైన సానుభూతిని వారసత్వంగా పొందింది.',
+    'A world where every individual has access to justice, healthcare, education, and dignified livelihood — regardless of gender, caste, or economic background.': 'లింగం, కులం లేదా ఆర్థిక నేపథ్యంతో సంబంధం లేకుండా ప్రతి వ్యక్తికి న్యాయం, ఆరోగ్య సంరక్షణ, విద్య మరియు గౌరవప్రదమైన జీవనోపాధి అందుబాటులో ఉండే ప్రపంచం.',
+    'Women Empowerment:': 'మహిళా సాధికారత:',
+    'Blood donation camps, COVID relief, and accessible medical support.': 'రక్తదాన శిబిరాలు, కోవిడ్ రిలీఫ్ మరియు అందుబాటులో ఉన్న వైద్య సహాయం.',
+    'Tree planting drives and awareness campaigns.': 'వృక్షారోపణ కార్యక్రమాలు మరియు అవగాహన ప్రచారాలు.',
+    'To serve as a pillar of support for the distressed, the illiterate, and the elderly — ensuring their rights, dignity, and well-being.': 'బాధితులకు, నిరక్షరాస్యులకు మరియు వృద్ధులకు ఆధార్ స్తంభంగా సేవ చేయడం — వారి హక్కులు, గౌరవం మరియు శ్రేయస్సును నిర్ధారించడం.',
+    'Distributed essentials to 50,000+ families during COVID-19 lockdown.': 'కోవిడ్-19 లాక్‌డౌన్ సమయంలో 50,000+ కుటుంబాలకు అవసరమైన వస్తువులను పంపిణీ చేశాము.',
+    'Youth Development:': 'యువత అభివృద్ధి:',
+    ' needs before our own — regardless of personal circumstances.': 'వ్యక్తిగత పరిస్థితులతో సంబంధం లేకుండా ఇతరుల అవసరాలను మన అవసరాలకు ముందు ఉంచడం.',
+    'Standing against age-old inequalities and ensuring every individual has access to their rightful entitlements and legal aid.': 'పాతకాలపు అసమానతలకు వ్యతిరేకంగా నిలబడి, ప్రతి వ్యక్తికి వారి హక్కులను మరియు చట్టపరమైన సహాయాన్ని నిర్ధారించడం.',
+    'Empowering women through self-defense training, legal protection, and economic independence via skill development.': 'ఆత్మరక్షణ శిక్షణ, చట్టపరమైన రక్షణ మరియు నైపుణ్యాభివృద్ధి ద్వారా ఆర్థిక స్వాతంత్ర్యం ద్వారా మహిళలను సాధికారులను చేయడం.',
+    'Planting thousands of saplings and fighting pollution — because caring for nature is caring for the future.': 'వేలాది మొక్కలను నాటడం మరియు కాలుష్యంతో పోరాడటం — ఎందుకంటే ప్రకృతిని సంరక్షించడం అంటే భవిష్యత్తును సంరక్షించడం.',
+    'FOUNDED': 'స్థాపించబడింది',
+    'Education Camp': 'విద్యా శిబిరం',
+    '5 States': '5 రాష్ట్రాలు',
+    'COVID Relief': 'కోవిడ్ రిలీఫ్',
+    'Women Empower': 'మహిళా సాధికారత',
+    'Tech Saala': 'టెక్ శాల',
+    'ONWARD': 'ముందుకు',
+    'We are proud to be associated with these esteemed organizations and professionals.': 'ఈ గౌరవనీయ సంస్థలు మరియు నిపుణులతో అనుబంధం కలిగి ఉన్నందుకు మేము గర్విస్తున్నాము.',
+    'Assistant Professor & Psychologist': 'అసిస్టెంట్ ప్రొఫెసర్ & సైకాలజిస్ట్',
+    'Why do you want to join? *': 'మీరు ఎందుకు చేరాలనుకుంటున్నారు? *',
+    'YouTube': 'యూట్యూబ్',
+    'Volunteer': 'స్వచ్ఛంద సేవకుడు',
+    'Women Empowerment': 'మహిళా సాధికారత',
+    'Back to top': 'పైకి వెళ్ళండి',
+    'Previous slide': 'మునుపటి స్లయిడ్',
+    'Next slide': 'తదుపరి స్లయిడ్',
+    'Slide 1': 'స్లయిడ్ 1',
+    'Slide 2': 'స్లయిడ్ 2',
+    'Slide 3': 'స్లయిడ్ 3',
+    'Slide 4': 'స్లయిడ్ 4',
+    'NGO Work': 'ఎన్జీఓ పని',
+    'Community': 'సమాజం',
+    'Perumalla Gowri Sirisha': 'పెరుమల్ల గౌరి సిరిషా',
+    'Explore moments captured across our various events and programs. Click on an event folder to view photos and videos.': 'మా వివిధ కార్యక్రమాలు మరియు కార్యక్రమాలలో సంగ్రహించిన క్షణాలను అన్వేషించండి. ఫోటోలు మరియు వీడియోలను వీక్షించడానికి ఈవెంట్ ఫోల్డర్‌పై క్లిక్ చేయండి.',
+    'Swacch Bharat': 'స్వచ్ఛ్ భారత్',
+    'COVID': 'కోవిడ్',
+    'Donations': 'విరాళాలు',
+    'Achievements': 'విజయాలు',
+    'Awards and recognition': 'అవార్డులు మరియు గుర్తింపు',
+    'Enter new image URL:': 'కొత్త చిత్ర URL నమోదు చేయండి:',
+    'Delete this image?': 'ఈ చిత్రాన్ని తొలగించాలా?',
+    'Enter image URL:': 'చిత్ర URL నమోదు చేయండి:',
+    'Enter folder key (no spaces, e.g. "newFolder"):': 'ఫోల్డర్ కీ నమోదు చేయండి (ఖాళీలు లేకుండా, ఉదా. "newFolder"):',
+    'Folder key already exists!': 'ఫోల్డర్ కీ ఇప్పటికే ఉంది!',
+    'Enter folder display name:': 'ఫోల్డర్ ప్రదర్శన పేరు నమోదు చేయండి:',
+    'Enter folder name:': 'ఫోల్డర్ పేరు నమోదు చేయండి:',
+    'Enter folder description:': 'ఫోల్డర్ వివరణ నమోదు చేయండి:',
+    'Delete this folder and all its images?': 'ఈ ఫోల్డర్ మరియు దానిలోని అన్ని చిత్రాలను తొలగించాలా?',
+    'Community Cleanliness Drives | Multiple Locations': 'కమ్యూనిటీ క్లీన్‌లినెస్ డ్రైవ్‌లు | బహుళ ప్రదేశాలు',
+    'COVID-19 Relief & Support | Multiple Locations': 'కోవిడ్-19 రిలీఫ్ & సపోర్ట్ | బహుళ ప్రదేశాలు',
+    'Teaching & Mentoring Programs | Multiple Locations': 'బోధన & మార్గదర్శక కార్యక్రమాలు | బహుళ ప్రదేశాలు',
+    'Donation Drives & Distributions | Multiple Locations': 'విరాళం డ్రైవ్‌లు & పంపిణీలు | బహుళ ప్రదేశాలు',
+    'Awards & Recognition | Multiple Locations': 'అవార్డులు & గుర్తింపు | బహుళ ప్రదేశాలు',
+    'Your generous donation helps us provide education, healthcare, and essential resources to underprivileged communities across India. Every contribution, no matter how small, creates lasting change.': 'మీ ఉదారమైన విరాళం భారతదేశంలోని వెనుకబడిన సమాజాలకు విద్య, ఆరోగ్య సంరక్షణ మరియు అవసరమైన వనరులను అందించడానికి మాకు సహాయపడుతుంది. ప్రతి సహకారం, ఎంత చిన్నదైనా, శాశ్వతమైన మార్పును సృష్టిస్తుంది.',
+    'Transparency': 'పారదర్శకత',
+    'UPI': 'యూపీఐ',
+    'Leave a note with your donation...': 'మీ విరాళంతో నోట్ జోడించండి...',
+    'Thank You,': 'ధన్యవాదాలు,',
+    'has been noted. Complete payment via UPI:': 'గుర్తించబడింది. UPI ద్వారా చెల్లింపు పూర్తి చేయండి:',
+    'Meet our passionate teams working tirelessly to create positive change in communities across India.': 'భారతదేశం అంతటా సమాజాలలో సానుకూల మార్పును సృష్టించడానికి అవిశ్రాంతంగా పనిచేస్తున్న మా ఉత్సాహభరితమైన బృందాలను కలవండి.',
+    'Feeding Hands': 'ఫీడింగ్ హ్యాండ్స్',
+    'Life Saviours': 'లైఫ్ సేవియర్స్',
+    'Elite Queens': 'ఎలైట్ క్వీన్స్',
+    'Visual Vibes': 'విజువల్ వైబ్స్',
+    'Guiding Lights': 'గైడింగ్ లైట్స్',
+    'Dedicated to providing nutritious meals to underprivileged children and families. We believe no child should go to bed hungry. Our team works with local communities, restaurants, and donors to ensure food reaches those who need it most.': 'వెనుకబడిన పిల్లలు మరియు కుటుంబాలకు పోషకమైన భోజనం అందించడానికి అంకితం చేయబడింది. ఏ పిల్లవాడు ఆకలితో నిద్రపోకూడదని మేము నమ్ముతాము. అవసరమైన వారికి ఆహారం చేరేలా మా బృందం స్థానిక సంఘాలు, రెస్టారెంట్లు మరియు దాతలతో కలిసి పనిచేస్తుంది.',
+    'We run daily meal programs in 15 locations across the city, serving fresh, nutritious meals to children and families in need. Our mission is to eliminate child hunger in our operational areas.': 'నగరం అంతటా 15 ప్రదేశాలలో మేము రోజువారీ భోజన కార్యక్రమాలను నిర్వహిస్తున్నాము, అవసరంలో ఉన్న పిల్లలు మరియు కుటుంబాలకు తాజా, పోషకమైన భోజనం అందిస్తున్నాము. మా కార్యాచరణ ప్రాంతాలలో పిల్లల ఆకలిని తొలగించడం మా లక్ష్యం.',
+    'Providing healthcare services and medical assistance to rural communities. Making healthcare accessible to all through mobile clinics, health camps, and awareness programs.': 'గ్రామీణ సమాజాలకు ఆరోగ్య సంరక్షణ సేవలు మరియు వైద్య సహాయం అందించడం. మొబైల్ క్లినిక్లు, ఆరోగ్య శిబిరాలు మరియు అవగాహన కార్యక్రమాల ద్వారా అందరికీ ఆరోగ్య సంరక్షణ అందుబాటులోకి తీసుకురావడం.',
+    'Our team of medical professionals and volunteers conducts regular health check-up camps in remote villages, distributes essential medicines, and provides health education to prevent common diseases.': 'మా వైద్య నిపుణులు మరియు స్వచ్ఛంద సేవకుల బృందం మారుమూల గ్రామాలలో క్రమం తప్పకుండా ఆరోగ్య తనిఖీ శిబిరాలను నిర్వహిస్తుంది, అవసరమైన మందులను పంపిణీ చేస్తుంది మరియు సాధారణ వ్యాధులను నివారించడానికి ఆరోగ్య విద్యను అందిస్తుంది.',
+    'Empowering youth with digital literacy and technology skills. Bridging the digital divide in rural areas through computer education, coding workshops, and digital awareness programs.': 'డిజిటల్ అక్షరాస్యత మరియు టెక్నాలజీ నైపుణ్యాలతో యువతను సాధికారులను చేయడం. కంప్యూటర్ విద్య, కోడింగ్ వర్క్‌షాప్‌లు మరియు డిజిటల్ అవగాహన కార్యక్రమాల ద్వారా గ్రామీణ ప్రాంతాలలో డిజిటల్ విభజనను తగ్గించడం.',
+    'We have set up computer labs in 10 rural schools and conduct regular workshops on basic computing, internet safety, and coding for young students. Our goal is to prepare rural youth for the digital economy.': 'మేము 10 గ్రామీణ పాఠశాలల్లో కంప్యూటర్ ల్యాబ్‌లను ఏర్పాటు చేసాము మరియు యువ విద్యార్థుల కోసం ప్రాథమిక కంప్యూటింగ్, ఇంటర్నెట్ భద్రత మరియు కోడింగ్‌పై క్రమం తప్పకుండా వర్క్‌షాప్‌లను నిర్వహిస్తున్నాము. డిజిటల్ ఆర్థిక వ్యవస్థ కోసం గ్రామీణ యువతను సిద్ధం చేయడం మా లక్ష్యం.',
+    'Empowering women through skill development and entrepreneurship. Creating leaders of tomorrow by providing vocational training, financial literacy, and business mentorship.': 'నైపుణ్యాభివృద్ధి మరియు వ్యవస్థాపకత ద్వారా మహిళలను సాధికారులను చేయడం. వృత్తి శిక్షణ, ఆర్థిక అక్షరాస్యత మరియు వ్యాపార మార్గదర్శకత్వం అందించడం ద్వారా రేపటి నాయకులను సృష్టించడం.',
+    'Our programs have helped hundreds of women start their own small businesses, achieve financial independence, and become role models in their communities. We focus on tailoring, handicrafts, food processing, and digital skills.': 'మా కార్యక్రమాలు వందలాది మహిళలు తమ స్వంత చిన్న వ్యాపారాలను ప్రారంభించడానికి, ఆర్థిక స్వాతంత్ర్యం సాధించడానికి మరియు వారి సమాజాలలో రోల్ మోడల్‌లుగా మారడానికి సహాయపడ్డాయి. మేము టైలరింగ్, చేతిపనులు, ఆహార ప్రాసెసింగ్ మరియు డిజిటల్ నైపుణ్యాలపై దృష్టి పెడతాము.',
+    'Creating compelling visual content and digital media to amplify our mission and reach more communities. From photography to videography, we tell stories that inspire action.': 'మా లక్ష్యాన్ని విస్తరించడానికి మరియు మరిన్ని సమాజాలను చేరుకోవడానికి ఆకర్షణీయమైన విజువల్ కంటెంట్ మరియు డిజిటల్ మీడియాను సృష్టించడం. ఫోటోగ్రఫీ నుండి వీడియోగ్రఫీ వరకు, మేము చర్యను ప్రేరేపించే కథలను చెప్పాము.',
+    'Our team documents the impact of our work through photos, videos, and social media. We create awareness campaigns, success stories, and educational content to spread our message far and wide.': 'మా బృందం ఫోటోలు, వీడియోలు మరియు సోషల్ మీడియా ద్వారా మా పని ప్రభావాన్ని డాక్యుమెంట్ చేస్తుంది. మా సందేశాన్ని దూరంగా వ్యాప్తి చేయడానికి మేము అవగాహన ప్రచారాలు, విజయగాథలు మరియు విద్యా కంటెంట్‌ను సృష్టిస్తాము.',
+    'Providing educational support and mentorship to students. Lighting the path to a brighter future through tutoring, career guidance, scholarship assistance, and life skills training.': 'విద్యార్థులకు విద్యా సహాయం మరియు మార్గదర్శకత్వం అందించడం. ట్యూషన్, కెరీర్ గైడెన్స్, స్కాలర్‌షిప్ సహాయం మరియు జీవిత నైపుణ్యాల శిక్షణ ద్వారా ప్రకాశవంతమైన భవిష్యత్తుకు మార్గాన్ని వెలిగించడం.',
+    'Our team works with 25 partner schools, providing after-school tutoring, mentorship programs, and scholarship support to help underprivileged students excel academically and build successful careers.': 'మా బృందం 25 భాగస్వామ్య పాఠశాలలతో కలిసి పనిచేస్తుంది, వెనుకబడిన విద్యార్థులు విద్యాపరంగా రాణించడానికి మరియు విజయవంతమైన కెరీర్‌లను నిర్మించడానికి సహాయపడటానికి స్కూల్ అనంతర ట్యూషన్, మెంటర్‌షిప్ ప్రోగ్రామ్‌లు మరియు స్కాలర్‌షిప్ సహాయాన్ని అందిస్తుంది.',
+    'Women Empowered': 'మహిళలు సాధికారులయ్యారు',
+    'Videos Created': 'సృష్టించిన వీడియోలు',
+    'View Attendance': 'హాజరు వీక్షించండి',
+    'Relation': 'సంబంధం',
+    'Camp': 'శిబిరం',
+    'Empowerment': 'సాధికారత',
+    'Health Camp': 'ఆరోగ్య శిబిరం',
+    'Feeding Program': 'ఫీడింగ్ ప్రోగ్రామ్',
+    'Program': 'కార్యక్రమం',
+    'Thank you for your application! We will get back to you soon.': 'మీ దరఖాస్తుకు ధన్యవాదాలు! మేము త్వరలో మిమ్మల్ని సంప్రదిస్తాము.',
+    'Thank you! Your message has been received. We will get back to you soon.': 'ధన్యవాదాలు! మీ సందేశం అందింది. మేము త్వరలో మిమ్మల్ని సంప్రదిస్తాము.',
+    'Delete this resident?': 'ఈ నివాసిని తొలగించాలా?',
+    'Delete this medical report?': 'ఈ వైద్య నివేదికను తొలగించాలా?',
+    'Delete this donor record?': 'ఈ దాత రికార్డును తొలగించాలా?',
+    'No medical records yet.': 'ఇంకా వైద్య రికార్డులు లేవు.',
+    'No new notifications.': 'కొత్త నోటిఫికేషన్లు లేవు.',
+    'Menu saved successfully!': 'మెనూ విజయవంతంగా సేవ్ చేయబడింది!',
+    'No attendance data to export.': 'ఎగుమతి చేయడానికి హాజరు డేటా లేదు.',
+    'March 2026 | Govt Primary School, Rural District': 'మార్చి 2026 | ప్రభుత్వ ప్రాథమిక పాఠశాల, గ్రామీణ జిల్లా',
+    'December 2025 | Community Center': 'డిసెంబర్ 2025 | కమ్యూనిటీ సెంటర్',
+    'February 2026 | Rural Health Center': 'ఫిబ్రవరి 2026 | గ్రామీణ ఆరోగ్య కేంద్రం',
+    'November 2025 | Community Kitchen': 'నవంబర్ 2025 | కమ్యూనిటీ కిచెన్',
+    'Your kindness brings hope. Complete your donation of': 'మీ దయ ఆశను తెస్తుంది. మీ విరాళాన్ని పూర్తి చేయండి',
+    'Scan & Pay via UPI': 'UPI ద్వారా స్కాన్ & చెల్లించండి',
+    'Pay': 'చెల్లించండి',
+    'After payment, please share the transaction details with us at': 'చెల్లింపు తర్వాత, లావాదేవీ వివరాలను మాతో ఇక్కడ పంచుకోండి',
+    ' or ': ' లేదా ',
+    'so we can acknowledge your contribution.': 'తద్వారా మేము మీ సహకారాన్ని అంగీకరించగలము.',
+    'UPI ID:': 'UPI ID:',
+    'UPI ID Copied! Use any UPI app to pay.': 'UPI ID కాపీ చేయబడింది! చెల్లించడానికి ఏదైనా UPI యాప్ ఉపయోగించండి.',
+    'A volunteer is someone who steps forward voluntarily—driven by a selfless spirit of service and an impartial attitude—to extend a helping hand. Through her extraordinary service, a woman leading an ordinary life has demonstrated that, when faced with the determination to support those in distress, one\'s own poverty is merely a minor obstacle.': 'స్వచ్ఛంద సేవకుడు అంటే స్వచ్ఛందంగా ముందుకు వచ్చి—నిస్వార్థ సేవా స్ఫూర్తితో మరియు నిష్పక్షపాత వైఖరితో—సహాయ హస్తం అందించే వ్యక్తి. తన అసాధారణ సేవ ద్వారా, ఒక సాధారణ జీవితాన్ని గడిపే మహిళ, ఇబ్బందుల్లో ఉన్నవారికి మద్దతుగా నిలవాలనే సంకల్పం ఎదురైనప్పుడు, ఒకరి స్వంత పేదరికం కేవలం ఒక చిన్న అడ్డంకి మాత్రమే అని నిరూపించింది.',
+
+    'Idli, Sambar, Chutney': 'ఇడ్లీ, సాంబార్, చట్నీ',
+    'Pongal, Vada, Chutney': 'పొంగలి, వడ, చట్నీ',
+    'Upma, Coconut Chutney': 'ఉప్మా, కొబ్బరి చట్నీ',
+    'Poori, Aloo Curry, Chutney': 'పూరి, ఆలూ కూర, చట్నీ',
+    'Rava Dosa, Coconut Chutney': 'రవ్వ దోస, కొబ్బరి చట్నీ',
+    'Chapati, Chole, Salad': 'చపాతీ, ఛోలే, సలాడ్',
+    'Bonda, Sambar, Chutney': 'బొండా, సాంబార్, చట్నీ',
+
+    'Rice, Dal, Palak Paneer, Salad': 'అన్నం, పప్పు, పాలక్ పనీర్, సలాడ్',
+    'Rice, Sambar, Bendakaya Fry, Curd': 'అన్నం, సాంబార్, బెండకాయ ఫ్రై, పెరుగు',
+    'Rice, Rasam, Guttivankaya Curry': 'అన్నం, రసం, గుత్తివంకాయ కూర',
+    'Rice, Pulihora, Papad, Curd': 'అన్నం, పులిహోర, పాపడ్, పెరుగు',
+    'Rice, Tomato Dal, Cabbage Poriyal': 'అన్నం, టమోటా పప్పు, క్యాబేజీ పోరియల్',
+    'Rice, Fish Curry / Veg Kurma, Curd': 'అన్నం, చేపల కూర / వెజ్ కుర్మా, పెరుగు',
+    'Rice, Brinjal Curry, Rasam, Papad': 'అన్నం, వంకాయ కూర, రసం, పాపడ్',
+
+    'Fruits, Milk': 'పండ్లు, పాలు',
+    'Tea, Biscuits': 'టీ, బిస్కెట్లు',
+    'Banana, Buttermilk': 'అరటిపండు, మజ్జిగ',
+    'Sprouts, Lemon Water': 'మొలకలు, నిమ్మకాయ నీరు',
+    'Fruit Salad, Milk': 'ఫ్రూట్ సలాడ్, పాలు',
+    'Roasted Chana, Tea': 'వేయించిన శనగ, టీ',
+    'Dates, Dry Fruits': 'ఖర్జూరాలు, డ్రై ఫ్రూట్స్',
+
+    'Chapati, Mixed Veg Curry, Kheer': 'చపాతీ, మిక్స్డ్ వెజ్ కూర, క్షీరం',
+    'Dosa, Potato Curry, Payasam': 'దోస, ఆలూ కూర, పాయసం',
+    'Chapati, Chana Masala, Rice Kheer': 'చపాతీ, ఛనా మసాలా, రైస్ క్షీరం',
+    'Lemon Rice, Pumpkin Sambar': 'నిమ్మకాయ అన్నం, గుమ్మడి సాంబార్',
+    'Chapati, Dal Tadka, Gulab Jamun': 'చపాతీ, దాల్ తడ్కా, గులాబ్ జామున్',
+    'Appam / Idiyappam, Stew': 'అప్పం / ఇడియప్పం, స్టూ',
+    'Veg Pulav, Raita, Sweet': 'వెజ్ పులావ్, రైతా, స్వీట్',
+
+    'Breakfast': 'అల్పాహారం',
+    'Lunch': 'మధ్యాహ్న భోజనం',
+    'Snacks': 'చిరుతిళ్లు',
+    'Dinner': 'రాత్రిభోజనం'
   }
 };
 
@@ -171,6 +420,7 @@ function toggleLangNav() {
 
 function changeLang(lang) {
   currentLang = lang;
+  try { localStorage.setItem('pcds_lang', lang); } catch (e) {}
   const btn = document.getElementById('translateToggle');
   if (btn) btn.innerHTML = `<i class="fas fa-language"></i>`;
   closeLangDropdown();
@@ -187,18 +437,46 @@ function changeLang(lang) {
   }
   const te = translations[lang];
   if (!te) return;
+
+  document.body.innerHTML = _savedBodyHTML;
+
   const keys = Object.keys(te).sort((a, b) => b.length - a.length);
-  let html = _savedBodyHTML;
-  for (const key of keys) {
-    html = html.split(key).join(te[key]);
-  }
-  document.body.innerHTML = html;
-  initPage();
+
+  document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,a,button,label,td,th,strong,span,div').forEach(el => {
+    let hasText = false, hasElem = false;
+    for (let i = 0; i < el.childNodes.length; i++) {
+      const cn = el.childNodes[i];
+      if (cn.nodeType === 3 && cn.textContent.trim()) hasText = true;
+      if (cn.nodeType === 1) hasElem = true;
+    }
+    if (!hasText || !hasElem) return;
+    const fullText = el.textContent.trim();
+    let matchedKey = null;
+    for (const key of keys) {
+      if (fullText === key) { matchedKey = key; break; }
+    }
+    if (!matchedKey) return;
+    const translated = te[matchedKey];
+    if (!translated) return;
+    if (/^H[1-6]$/.test(el.tagName) && el.querySelector(':scope > span')) {
+      const savedStyle = el.querySelector(':scope > span').getAttribute('style') || '';
+      const words = translated.split(' ');
+      if (words.length > 1) {
+        const last = words.pop();
+        el.innerHTML = words.join(' ') + '<span' + (savedStyle ? ' style="' + savedStyle + '"' : '') + '>' + last + '</span>';
+      } else {
+        el.innerHTML = translated;
+      }
+    } else {
+      el.innerHTML = translated;
+    }
+  });
+
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
   const nodeFixes = [];
   while (walker.nextNode()) {
     const node = walker.currentNode;
-    let text = node.textContent;
+    let text = node.textContent.replace(/\s+/g, ' ');
     if (!text.trim()) continue;
     const p = node.parentElement;
     if (!p || p.tagName === 'SCRIPT' || p.tagName === 'STYLE') continue;
@@ -216,6 +494,8 @@ function changeLang(lang) {
   for (const { node, val } of nodeFixes) {
     node.textContent = val;
   }
+
+  initPage();
 }
 
 // ─── PAGE INITIALIZATION ───
@@ -1073,12 +1353,14 @@ function renderOAHMenu() {
   const grid = document.getElementById('menuGrid');
   if (!grid) return;
   const data = getOAHData();
+  const te = currentLang === 'te' ? (translations.te || {}) : {};
+  const _t = s => te[s] || s;
   grid.innerHTML = data.menu.map(m => `<div class="menu-card">
-    <div class="day">${m.day}</div>
-    <div class="meal"><strong>Breakfast:</strong> ${m.breakfast}</div>
-    <div class="meal"><strong>Lunch:</strong> ${m.lunch}</div>
-    <div class="meal"><strong>Snacks:</strong> ${m.snacks}</div>
-    <div class="meal"><strong>Dinner:</strong> ${m.dinner}</div>
+    <div class="day">${_t(m.day)}</div>
+    <div class="meal"><strong>${_t('Breakfast:')}</strong> ${_t(m.breakfast)}</div>
+    <div class="meal"><strong>${_t('Lunch:')}</strong> ${_t(m.lunch)}</div>
+    <div class="meal"><strong>${_t('Snacks:')}</strong> ${_t(m.snacks)}</div>
+    <div class="meal"><strong>${_t('Dinner:')}</strong> ${_t(m.dinner)}</div>
   </div>`).join('');
 }
 
@@ -1087,15 +1369,17 @@ function renderMenuEditor() {
   const form = document.getElementById('menuEditorForm');
   if (!form) return;
   const data = getOAHData();
+  const te = currentLang === 'te' ? (translations.te || {}) : {};
+  const _t = s => te[s] || s;
   form.innerHTML = data.menu.map((m, i) => `<div style="background:#fff;border-radius:var(--radius);padding:15px;margin-bottom:12px;border:1px solid var(--cream-dark);">
-    <h4 style="margin-bottom:8px;color:var(--primary);">${m.day}</h4>
+    <h4 style="margin-bottom:8px;color:var(--primary);">${_t(m.day)}</h4>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <label style="font-size:12px;font-weight:600;">Breakfast</label>
-      <label style="font-size:12px;font-weight:600;">Lunch</label>
+      <label style="font-size:12px;font-weight:600;">${_t('Breakfast')}</label>
+      <label style="font-size:12px;font-weight:600;">${_t('Lunch')}</label>
       <input value="${escHtml(m.breakfast)}" id="menuBrk${i}" style="padding:6px 10px;border:1px solid #E2E8F0;border-radius:6px;font-size:13px;">
       <input value="${escHtml(m.lunch)}" id="menuLun${i}" style="padding:6px 10px;border:1px solid #E2E8F0;border-radius:6px;font-size:13px;">
-      <label style="font-size:12px;font-weight:600;">Snacks</label>
-      <label style="font-size:12px;font-weight:600;">Dinner</label>
+      <label style="font-size:12px;font-weight:600;">${_t('Snacks')}</label>
+      <label style="font-size:12px;font-weight:600;">${_t('Dinner')}</label>
       <input value="${escHtml(m.snacks)}" id="menuSnk${i}" style="padding:6px 10px;border:1px solid #E2E8F0;border-radius:6px;font-size:13px;">
       <input value="${escHtml(m.dinner)}" id="menuDin${i}" style="padding:6px 10px;border:1px solid #E2E8F0;border-radius:6px;font-size:13px;">
     </div>
@@ -1325,3 +1609,17 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(wa);
   }
 });
+
+// Restore saved language preference across page loads
+(function restoreLang() {
+  try {
+    const saved = localStorage.getItem('pcds_lang');
+    if (saved === 'te') {
+      setTimeout(() => {
+        changeLang('te');
+        const btn = document.getElementById('langNavBtn');
+        if (btn) btn.textContent = 'English';
+      }, 100);
+    }
+  } catch (e) {}
+})();
