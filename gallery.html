@@ -83,6 +83,21 @@
     </div>
   </section>
 
+      <!-- Add Image Modal -->
+      <div class="admin-modal" id="addImageModal">
+        <div class="admin-modal-content">
+          <span class="admin-modal-close" onclick="closeAddImageModal()">&times;</span>
+          <h3 id="addImageTitle"><i class="fas fa-plus"></i> Add Image</h3>
+          <p>Add image via URL or upload from your device.</p>
+          <input type="text" id="addImageUrl" placeholder="Enter image URL" style="margin-bottom:10px;">
+          <div style="text-align:center; margin-bottom:10px; font-weight:bold;">OR</div>
+          <input type="file" id="addImageFile" accept="image/*" multiple style="margin-bottom:10px; width:100%; border:1px solid #ccc; padding:8px; border-radius:4px;">
+          <button class="btn btn-primary" onclick="confirmAddImage()" style="width:100%;">Upload / Add</button>
+          <input type="hidden" id="addImageFolderKey">
+          <input type="hidden" id="addImageIsCover">
+        </div>
+      </div>
+
   <!-- Admin Controls -->
   <div style="text-align:center;padding:20px;background:var(--cream-dark);" id="adminControls">
     <button class="btn btn-outline-oah" id="adminLoginBtn" onclick="showAdminLogin()"><i class="fas fa-lock"></i> Admin Portal</button>
@@ -107,7 +122,7 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#about">About Us</a></li>
-            <li><a href="teams.html">Our Teams</a></li>
+            <li><a href="teams.html">Our Programs</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="oldage-home.html">Old Age Home</a></li>
             <li><a href="index.html#contact">Contact</a></li>
@@ -183,6 +198,7 @@
             if (galleryFolders[k]) {
               galleryFolders[k].images = parsed[k].images || galleryFolders[k].images;
               galleryFolders[k].title = parsed[k].title || galleryFolders[k].title;
+              galleryFolders[k].cover = parsed[k].cover || galleryFolders[k].cover;
             } else {
               galleryFolders[k] = parsed[k];
             }
@@ -194,13 +210,13 @@
     async function saveFolderData() {
       const data = {};
       Object.keys(galleryFolders).forEach(k => {
-        data[k] = { title: galleryFolders[k].title, desc: galleryFolders[k].desc, images: galleryFolders[k].images };
+        data[k] = { title: galleryFolders[k].title, desc: galleryFolders[k].desc, images: galleryFolders[k].images, cover: galleryFolders[k].cover };
       });
       try {
         if (typeof apiGetGallery === 'function') {
           for (const [key, val] of Object.entries(data)) {
             if (typeof apiUpdateGalleryFolder === 'function') {
-              await apiUpdateGalleryFolder(key, { title: val.title, desc: val.desc, images: val.images });
+              await apiUpdateGalleryFolder(key, { title: val.title, desc: val.desc, images: val.images, cover: val.cover });
             }
           }
           return;
@@ -215,7 +231,7 @@
       container.innerHTML = '';
       Object.keys(galleryFolders).forEach(key => {
         const f = galleryFolders[key];
-        const thumb = f.images && f.images.length > 0 ? f.images[0] : 'images/placeholder.svg';
+        const thumb = f.cover || (f.images && f.images.length > 0 ? f.images[0] : 'images/placeholder.svg');
         const card = document.createElement('div');
         card.className = 'folder-card';
         card.style.cursor = 'pointer';
@@ -262,6 +278,7 @@
       if (document.body.classList.contains('admin-logged-in')) {
         html += `<div style="text-align:center;margin-top:20px;">
           <button class="btn btn-primary" onclick="addImage('${key}')"><i class="fas fa-plus"></i> Add Image</button>
+          <button class="btn btn-outline-oah" onclick="setCoverPhoto('${key}')" style="margin-left:10px;"><i class="fas fa-image"></i> Set Cover</button>
           <button class="btn btn-outline-oah" onclick="editFolderMeta('${key}')" style="margin-left:10px;"><i class="fas fa-pencil-alt"></i> Edit Folder</button>
           <button class="btn btn-outline-oah" onclick="deleteFolder('${key}')" style="margin-left:10px;border-color:#dc2626;color:#dc2626;"><i class="fas fa-trash"></i> Delete Folder</button>
         </div>`;
@@ -295,12 +312,71 @@
       showFolder(key);
     }
 
-    async function addImage(key) {
-      const newSrc = prompt('Enter image URL:');
-      if (newSrc && newSrc.trim()) {
-        galleryFolders[key].images.push(newSrc.trim());
+    function addImage(key) {
+      document.getElementById('addImageTitle').innerHTML = '<i class="fas fa-plus"></i> Add Image';
+      document.getElementById('addImageUrl').value = '';
+      document.getElementById('addImageFile').value = '';
+      document.getElementById('addImageFolderKey').value = key;
+      document.getElementById('addImageIsCover').value = 'false';
+      document.getElementById('addImageFile').multiple = true;
+      document.getElementById('addImageModal').style.display = 'flex';
+    }
+
+    function setCoverPhoto(key) {
+      document.getElementById('addImageTitle').innerHTML = '<i class="fas fa-image"></i> Set Cover Photo';
+      document.getElementById('addImageUrl').value = '';
+      document.getElementById('addImageFile').value = '';
+      document.getElementById('addImageFolderKey').value = key;
+      document.getElementById('addImageIsCover').value = 'true';
+      document.getElementById('addImageFile').multiple = false;
+      document.getElementById('addImageModal').style.display = 'flex';
+    }
+
+    function closeAddImageModal() {
+      document.getElementById('addImageModal').style.display = 'none';
+    }
+
+    async function confirmAddImage() {
+      const key = document.getElementById('addImageFolderKey').value;
+      const isCover = document.getElementById('addImageIsCover').value === 'true';
+      const urlInput = document.getElementById('addImageUrl').value.trim();
+      const fileInput = document.getElementById('addImageFile');
+      
+      const processImageString = async (srcStr) => {
+        if (isCover) {
+          galleryFolders[key].cover = srcStr;
+        } else {
+          galleryFolders[key].images.push(srcStr);
+        }
+      };
+
+      if (urlInput) {
+        await processImageString(urlInput);
         await saveFolderData();
-        showFolder(key);
+        closeAddImageModal();
+        if (isCover) { renderGalleryFolders(); backToGallery(); } else showFolder(key);
+        return;
+      }
+
+      if (fileInput.files && fileInput.files.length > 0) {
+        const files = Array.from(fileInput.files);
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const reader = new FileReader();
+          await new Promise((resolve, reject) => {
+            reader.onload = async (e) => {
+              await processImageString(e.target.result);
+              resolve();
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+        }
+        await saveFolderData();
+        closeAddImageModal();
+        if (isCover) { renderGalleryFolders(); backToGallery(); } else showFolder(key);
+      } else {
+        closeAddImageModal();
       }
     }
 
@@ -310,7 +386,7 @@
       if (galleryFolders[key]) { alert('Folder key already exists!'); return; }
       const title = prompt('Enter folder display name:');
       if (!title || !title.trim()) return;
-      galleryFolders[key] = { title: title.trim(), desc: '', images: [] };
+      galleryFolders[key] = { title: title.trim(), desc: '', images: [], cover: '' };
       try {
         if (typeof apiAddGalleryFolder === 'function') {
           await apiAddGalleryFolder(key, title.trim(), '', []);
