@@ -811,7 +811,6 @@ section { padding: 90px 0; }
 .assoc-scroll {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   gap: 25px;
   margin-top: 30px;
@@ -820,7 +819,6 @@ section { padding: 90px 0; }
   z-index: 1;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  scroll-behavior: smooth;
 }
 .assoc-scroll::-webkit-scrollbar { height: 0; }
 .assoc-card {
@@ -833,7 +831,6 @@ section { padding: 90px 0; }
   min-width: 280px;
   max-width: 320px;
   flex-shrink: 0;
-  scroll-snap-align: start;
   backdrop-filter: blur(8px);
   position: relative;
   overflow: hidden;

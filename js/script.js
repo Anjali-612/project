@@ -285,7 +285,12 @@ const translations = {
     'Slide 4': 'స్లయిడ్ 4',
     'NGO Work': 'ఎన్జీఓ పని',
     'Community': 'సమాజం',
-    'Perumalla Gowri Sirisha': 'పెరుమల్ల గౌరి సిరిషా',
+    'Perumalla Gowri Sireesha, B. Com., LL.B.': 'పెరుమల్ల గౌరి సిరీషా, బి. కామ్., ఎల్.ఎల్.బి.',
+    '"Problems pale in comparison to the resolve to help."': '"Problems pale in comparison to the resolve to help."',
+    'A volunteer is someone who steps forward voluntarily—driven by a selfless spirit of service and an impartial attitude—to render aid to others. Demonstrating that poverty is merely a circumstance when weighed against the determination to support those in distress, a woman leading an ordinary life has performed extraordinary acts of service. Moved by the suffering of the masses, weary of age-old inequalities, and deeply affected by the sight of lives shattered by financial ruin—manifested in the gaunt frames of the destitute—she resolved to stand as a pillar of support. This embodiment of voluntary service—our Gouri Sirisha—serves as a true brand ambassador for the very concept of a "volunteer."': 'A volunteer is someone who steps forward voluntarily—driven by a selfless spirit of service and an impartial attitude—to render aid to others. Demonstrating that poverty is merely a circumstance when weighed against the determination to support those in distress, a woman leading an ordinary life has performed extraordinary acts of service. Moved by the suffering of the masses, weary of age-old inequalities, and deeply affected by the sight of lives shattered by financial ruin—manifested in the gaunt frames of the destitute—she resolved to stand as a pillar of support. This embodiment of voluntary service—our Gouri Sirisha—serves as a true brand ambassador for the very concept of a "volunteer."',
+    'As the daughter of Perumalla Suryanarayana—a prominent activist for the Right to Information (RTI) Act—she inherited from an early age a deep sensitivity to human suffering and a profound empathy for victims of injustice. In a life dedicated to the path of service, she faced a tragic blow when her activist father was murdered. While pursuing her Intermediate studies on one hand, she worked as a photographer in an election ward on the other. She diligently saved her earnings, utilizing the funds to support both her own education and her efforts to assist others.': 'As the daughter of Perumalla Suryanarayana—a prominent activist for the Right to Information (RTI) Act—she inherited from an early age a deep sensitivity to human suffering and a profound empathy for victims of injustice. In a life dedicated to the path of service, she faced a tragic blow when her activist father was murdered. While pursuing her Intermediate studies on one hand, she worked as a photographer in an election ward on the other. She diligently saved her earnings, utilizing the funds to support both her own education and her efforts to assist others.',
+    'Upon completing her degree, she embarked on a full-time journey of service; driven by an unwavering passion to help, she began actively participating in charitable initiatives and collaborating with various voluntary organizations. She provided invaluable assistance to the illiterate and the elderly, helping them navigate the bureaucratic processes required to obtain essential entitlements such as ration cards and pensions. Ultimately, by establishing the "Prajwala Community Development Society," she dedicated her entire life wholeheartedly to the service of humanity.': 'Upon completing her degree, she embarked on a full-time journey of service; driven by an unwavering passion to help, she began actively participating in charitable initiatives and collaborating with various voluntary organizations. She provided invaluable assistance to the illiterate and the elderly, helping them navigate the bureaucratic processes required to obtain essential entitlements such as ration cards and pensions. Ultimately, by establishing the "ప్రజ్వల కమ్యూనిటీ డెవలప్‌మెంట్ సొసైటీ," she dedicated her entire life wholeheartedly to the service of humanity.',
+    'She has organized blood donation camps on more than twenty occasions, ensuring that life-saving blood was made available to those in critical need during emergencies. The COVID-19 pandemic left countless people destitute overnight, plunging them into the depths of hunger and distress. Amidst a situation where movement was virtually impossible, Sirisha stepped forward. In the early hours of the morning, she reached out to vegetable vendors she knew—as well as other friends—and earnestly appealed for assistance, explaining that many poor people were suffering. She would gather the collected supplies, package them, and distribute them to the needy. Many people would call out, "Sireesha..."': 'She has organized blood donation camps on more than twenty occasions, ensuring that life-saving blood was made available to those in critical need during emergencies. The కోవిడ్-19 pandemic left countless people destitute overnight, plunging them into the depths of hunger and distress. Amidst a situation where movement was virtually impossible, Sirisha stepped forward. In the early hours of the morning, she reached out to vegetable vendors she knew—as well as other friends—and earnestly appealed for assistance, explaining that many poor people were suffering. She would gather the collected supplies, package them, and distribute them to the needy. Many people would call out, "Sireesha..."',
     'Explore moments captured across our various events and programs. Click on an event folder to view photos and videos.': 'మా వివిధ కార్యక్రమాలు మరియు కార్యక్రమాలలో సంగ్రహించిన క్షణాలను అన్వేషించండి. ఫోటోలు మరియు వీడియోలను వీక్షించడానికి ఈవెంట్ ఫోల్డర్‌పై క్లిక్ చేయండి.',
     'Swacch Bharat': 'స్వచ్ఛ్ భారత్',
     'COVID': 'కోవిడ్',
@@ -652,23 +657,29 @@ function initAssocScroll() {
   if (!container) return;
   const cards = container.querySelectorAll('.assoc-card');
   if (cards.length < 2) return;
-  let current = 0;
   let interval;
+  let dotUpdateInterval;
+  const SPEED = 1.5;
 
   function goTo(index) {
     if (index < 0) index = cards.length - 1;
     if (index >= cards.length) index = 0;
-    current = index;
-    const card = cards[current];
+    const card = cards[index];
     const offset = card.offsetLeft - (container.clientWidth - card.offsetWidth) / 2;
     container.scrollTo({ left: offset, behavior: 'smooth' });
     updateDots();
   }
 
-  function next() { goTo(current + 1); }
+  function startAuto() {
+    interval = setInterval(() => {
+      container.scrollLeft += SPEED;
+      if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
+        container.scrollLeft = 0;
+      }
+    }, 16);
+  }
 
-  function startAuto() { interval = setInterval(next, 3000); }
-  function stopAuto() { clearInterval(interval); }
+  function stopAuto() { clearInterval(interval); clearInterval(dotUpdateInterval); }
 
   container.addEventListener('mouseenter', stopAuto);
   container.addEventListener('mouseleave', startAuto);
@@ -680,7 +691,22 @@ function initAssocScroll() {
     dotsContainer.className = 'assoc-dots';
     wrapper.appendChild(dotsContainer);
   }
+
+  function getCurrentIndex() {
+    const cardWidth = cards[0].offsetWidth + 25;
+    const scrollCenter = container.scrollLeft + container.clientWidth / 2;
+    let closest = 0;
+    let closestDist = Infinity;
+    for (let i = 0; i < cards.length; i++) {
+      const cardCenter = cards[i].offsetLeft + cards[i].offsetWidth / 2;
+      const dist = Math.abs(scrollCenter - cardCenter);
+      if (dist < closestDist) { closestDist = dist; closest = i; }
+    }
+    return closest;
+  }
+
   function updateDots() {
+    const current = getCurrentIndex();
     dotsContainer.innerHTML = '';
     for (let i = 0; i < cards.length; i++) {
       const dot = document.createElement('span');
@@ -693,7 +719,7 @@ function initAssocScroll() {
   cards.forEach(c => c.addEventListener('click', stopAuto));
 
   updateDots();
-  setTimeout(() => goTo(0), 100);
+  dotUpdateInterval = setInterval(updateDots, 300);
   startAuto();
 }
 
