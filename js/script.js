@@ -291,9 +291,11 @@ const translations = {
     'Please fill in all required fields.': 'దయచేసి అన్ని తప్పనిసరి ఫీల్డ్‌లను పూరించండి.',
     'Please enter a valid donation amount.': 'దయచేసి చెల్లుబాటు అయ్యే విరాళం మొత్తాన్ని నమోదు చేయండి.',
     'Sowmya Multi Speciality Dental Clinic': 'సౌమ్య మల్టీ స్పెషాలిటీ డెంటల్ క్లినిక్',
-    'Dr. Ch. Sowmya, B.D.S.; F.A.G.E. Cosmetic Dental Surgeon': 'డా. సిహెచ్. సౌమ్య, B.D.S.; F.A.G.E. కాస్మెటిక్ డెంటల్ సర్జన్',
     'Dr. Ch. Sowmya & Dr. Ch. Naveen': 'డా. సిహెచ్. సౌమ్య & డా. సిహెచ్. నవీన్',
-    'Dr. Ch. Naveen, M.D.S. Prosthodontics & Implantologist': 'డా. సిహెచ్. నవీన్, M.D.S. ప్రోస్టోడాంటిక్స్ & ఇంప్లాంటాలజిస్ట్',
+    'Dr. Ch. Sowmya': 'డా. సిహెచ్. సౌమ్య',
+    'B.D.S.; F.A.G.E. Cosmetic Dental Surgeon': 'B.D.S.; F.A.G.E. కాస్మెటిక్ డెంటల్ సర్జన్',
+    'Dr. Ch. Naveen': 'డా. సిహెచ్. నవీన్',
+    'M.D.S. Prosthodontics & Implantologist': 'M.D.S. ప్రోస్టోడాంటిక్స్ & ఇంప్లాంటాలజిస్ట్',
     'Kothapet, Guntur': 'కోతపేట, గుంటూరు',
     'Reakha Clinic': 'రేఖా క్లినిక్',
     'Dr. Sahan Kumar Garu': 'డా. సాహన్ కుమార్ గారు',
@@ -569,7 +571,7 @@ function initAssocScroll() {
 
   function next() { goTo(current + 1); }
 
-  function startAuto() { interval = setInterval(next, 3000); }
+  function startAuto() { interval = setInterval(next, 2000); }
   function stopAuto() { clearInterval(interval); }
 
   container.addEventListener('mouseenter', stopAuto);
