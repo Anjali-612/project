@@ -1,15 +1,24 @@
 const express = require('express');
 const cors = require('cors');
+<<<<<<< HEAD
+=======
 const path = require('path');
+>>>>>>> 0d7efb44c327d591c059deb4c8e83fa6d2b0f05d
 const pool = require('./db');
 
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
+<<<<<<< HEAD
+
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+const PORT = process.env.PORT || 3001;
+=======
 app.use(express.static(path.join(__dirname, '..')));
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 const PORT = process.env.PORT || 3000;
+>>>>>>> 0d7efb44c327d591c059deb4c8e83fa6d2b0f05d
 
 // ─── ADMIN AUTH ───
 function requireAdmin(req, res, next) {
