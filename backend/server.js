@@ -369,8 +369,12 @@ app.put('/api/gallery/:key', requireAdmin, async (req, res) => {
   try {
     const { title, desc, images } = req.body;
     const { rows } = await pool.query(
-      'UPDATE gallery_folders SET title=$1, description=$2, images=$3 WHERE key=$4 RETURNING *',
-      [title, desc, images, req.params.key]
+      `INSERT INTO gallery_folders (key, title, description, images)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT (key)
+       DO UPDATE SET title=$2, description=$3, images=$4
+       RETURNING *`,
+      [req.params.key, title, desc || '', images || []]
     );
     res.json(rows[0]);
   } catch (err) {

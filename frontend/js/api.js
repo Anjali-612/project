@@ -1,7 +1,7 @@
-// ─── API CONFIG ───
 const API_BASE = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
-  ? 'http://localhost:3001/api'
+  ? (window.location.port === '3000' ? '/api' : 'http://localhost:3000/api')
   : '/api';
+
 
 let _adminPassword = '';
 let _cachedOahData = null;
@@ -150,6 +150,7 @@ async function apiGetVolunteers() {
 // ─── GALLERY ───
 async function apiGetGallery() {
   const res = await fetch(API_BASE + '/gallery');
+  if (!res.ok) throw new Error('Failed to load gallery');
   return res.json();
 }
 
@@ -158,6 +159,10 @@ async function apiAddGalleryFolder(key, title, desc, images) {
     method: 'POST', headers: { 'Content-Type': 'application/json', ...getAdminHeaders() },
     body: JSON.stringify({ key, title, desc, images: images || [] })
   });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || 'Failed to add folder');
+  }
   return res.json();
 }
 
@@ -166,11 +171,19 @@ async function apiUpdateGalleryFolder(key, data) {
     method: 'PUT', headers: { 'Content-Type': 'application/json', ...getAdminHeaders() },
     body: JSON.stringify(data)
   });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || 'Failed to update folder');
+  }
   return res.json();
 }
 
 async function apiDeleteGalleryFolder(key) {
-  await fetch(API_BASE + '/gallery/' + encodeURIComponent(key), { method: 'DELETE', headers: getAdminHeaders() });
+  const res = await fetch(API_BASE + '/gallery/' + encodeURIComponent(key), { method: 'DELETE', headers: getAdminHeaders() });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || 'Failed to delete folder');
+  }
 }
 
 // ─── STATS ───
