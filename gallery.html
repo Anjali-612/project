@@ -167,13 +167,8 @@
         if (typeof apiGetGallery === 'function') {
           const apiData = await apiGetGallery();
           if (apiData && Object.keys(apiData).length > 0) {
-            // Clear current memory object and replace with database values
-            // so deletions and order are correctly reflected.
-            for (const key in galleryFolders) {
-              delete galleryFolders[key];
-            }
             Object.keys(apiData).forEach(k => {
-              galleryFolders[k] = { title: apiData[k].title, desc: apiData[k].desc || '', images: apiData[k].images || [] };
+              galleryFolders[k] = { ...galleryFolders[k], ...apiData[k] };
             });
             return;
           }

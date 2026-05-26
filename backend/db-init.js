@@ -94,15 +94,6 @@ INSERT INTO menu (day, breakfast, lunch, snacks, dinner) VALUES
   ('Friday', 'Vada, Sambar', 'Rice, Curry, Curd', 'Fruit, Milk', 'Rice, Dal, Curry'),
   ('Saturday', 'Pesarattu, Chutney', 'Rice, Dal, Rasam', 'Tea, Snacks', 'Chapati, Dal')
 ON CONFLICT (day) DO NOTHING;
-
--- Insert default gallery folders
-INSERT INTO gallery_folders (key, title, description, images) VALUES
-  ('swacchBharat', 'Swacch Bharat', 'Community Cleanliness Drives | Multiple Locations', ARRAY['images/sw1.jpeg','images/sw2.jpeg','images/sw3.jpeg','images/sw4.jpeg']),
-  ('covid', 'COVID', 'COVID-19 Relief & Support | Multiple Locations', ARRAY['images/Covid.jpeg','images/covid cert.jpeg','images/covid3.jpeg','images/health.jpeg']),
-  ('education', 'Education', 'Teaching & Mentoring Programs | Multiple Locations', ARRAY['images/education1.jpeg','images/education2.jpeg','images/education3.jpeg']),
-  ('donations', 'Donations', 'Donation Drives & Distributions | Multiple Locations', ARRAY['images/donation main page.jpeg','images/blood donation.jpeg','images/boold donation2.jpeg','images/hair donation.jpeg']),
-  ('achievements', 'Achievements', 'Awards & Recognition | Multiple Locations', ARRAY['images/achevement1.jpeg','images/ac2.jpeg','images/ac3.jpeg','images/ac4.jpeg'])
-ON CONFLICT (key) DO NOTHING;
 `;
 
 async function initDb() {
